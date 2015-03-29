@@ -1,0 +1,1 @@
+F:\PHP\htdocs\enwebstore_beta1\app/views/ensyslogs/show.blade.php
