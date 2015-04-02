@@ -9,9 +9,10 @@ class ApisController extends \BaseController {
 	 */
 	public function index()
 	{
-		$apis = Api::all();
+		
+		$apis = Product::all();
 
-		return View::make('apis.index', compact('apis'));
+		return json_encode($apis);
 	}
 
 	/**
