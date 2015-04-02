@@ -36,7 +36,9 @@
 	<ul class="small-block-grid-2 large-block-grid-3">
 		@foreach($products as $product)
 
-		<li> <a href="#" data-reveal-id="showProduct_{{$product->id}}" style="color:#700000;background-color:#000000;font-size:30px">
+	
+		
+		<li> <a  onclick="window.history.pushState('','', 'products/{{$product->id}}')";href="#" onclick="window.history.pushState('','','bananas/bandanas/{{$product}}');"  data-reveal-id="showProduct_{{$product->id}}" style="color:#700000;background-color:#000000;font-size:30px">
 			  <img src="http://www.eternallynocturnal.com/store/public/images/products/{{$product->name}}.jpg" style="max-height:700px" />
 		</a>
 		<div class="row">
