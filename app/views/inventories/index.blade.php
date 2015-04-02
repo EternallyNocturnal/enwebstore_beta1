@@ -1,1 +1,0 @@
-F:\PHP\htdocs\enwebstore_beta1\app/views/inventories/index.blade.php

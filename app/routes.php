@@ -11,27 +11,42 @@
 |
 */
 
-Route::get('/', function()
+
+Route::filter('auth.basic', function()
 {
-	return View::make('hello');
+    return Auth::basic("username");
 });
+
 
 //+++++++++++++++++++++++GENERAL ROUTES+++++++++++
 Route::resource('products', 'ProductsController');
-Route::resource('api', 'ApisController');
-Route::resource('bands', 'BandsController');
-Route::resource('cart', 'CartsController');
-Route::resource('images', 'ImagessController');
-Route::resource('inventory', 'InventoriesController');
-Route::resource('shows', 'ShowsController');
-Route::resource('sales', 'SalesController');
-Route::resource('revenue', 'RevenuesController');
+
+Route::group(array('prefix' => 'admin/', 'before' => 'auth.basic'), function(){
+	Route::resource('bands', 'BandsController');
+	Route::resource('cart', 'CartsController');
+	Route::resource('images', 'ImagessController');
+	Route::resource('inventory', 'InventoriesController');
+	Route::resource('shows', 'ShowsController');
+	Route::resource('sales', 'SalesController');
+	Route::resource('revenue', 'RevenuesController');
+});
+
 //----------------------GENERAL ROUTES------------
 
 
+//++++++++++API ROUTES+++++++++++++++++++++++++
 
 
+Route::group(array('prefix' => 'api/v1', 'before' => 'auth.basic'), function()
+{
+	Route::resource('api', 'ApisController');
+    Route::resource('url', 'UrlsController');
+    //more API Routes here.
 
+});
+
+
+//----------------API ROUTES-------------------
 
 
 
