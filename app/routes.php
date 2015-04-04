@@ -20,6 +20,7 @@ Route::filter('auth.basic', function()
 
 //+++++++++++++++++++++++GENERAL ROUTES+++++++++++
 Route::resource('products', 'ProductsController');
+Route::post('/SendCommentFeedback', array('as' => 'commentFeedback', 'uses' => 'ProductsController@commentFeedback'));
 
 Route::group(array('prefix' => 'admin/', 'before' => 'auth.basic'), function(){
 	Route::resource('bands', 'BandsController');

@@ -3,16 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:image" content="http://www.eternallynocturnal.com/images/blackskull.jpg">
+<meta property="og:image" content="https://www.eternallynocturnal.com/images/blackskull.jpg">
   <title>Stay Awake to Create</title>
-   <link rel="stylesheet" href="http://www.eternallynocturnal.com/store/public/foundation/css/foundation.css">
-   <link rel="stylesheet" href="http://www.eternallynocturnal.com/store/public/foundation/css/normalize.css">
+   <link rel="stylesheet" href="https://www.eternallynocturnal.com/store/public/foundation/css/foundation.css">
+   <link rel="stylesheet" href="https://www.eternallynocturnal.com/store/public/foundation/css/normalize.css">
    <link rel="stylesheet" href="//localhost/enwebstore_beta1/public/foundation/foundation-icons/foundation-icons.css" />
-   <link rel="stylesheet" type="text/css" href="//localhost/enwebstore/public/date/jquery.datetimepicker.css"/ >
-      <script src="http://www.eternallynocturnal.com/store/public/date/jquery.js"></script>
-      <script src="http://www.eternallynocturnal.com/store/public/date/jquery.datetimepicker.js"></script>
 
- <script src="http://www.eternallynocturnal.com/store/public/foundation/js/vendor/modernizr.js"></script>
 
 
   <style>
@@ -98,16 +94,10 @@
 <body>
 
 
+   
 
-      {{--DATEPICKER INSTANTIATEX10--}}
-            @foreach(range(1,10) as $datetimepicker)
-              <script language="javascript">jQuery("#datetimepicker_{{$datetimepicker}}").datetimepicker(
-                {theme:'dark',
-                 format:'d.m.Y H:i',
-                 step:15});</script>
-            @endforeach
-      {{--DATEPICKER END--}}
 
+ 
 
 
 <script>
@@ -134,43 +124,59 @@
 
 <ul class="example-orbit" data-orbit style="max-height:300px">
   <li>
-    <img src="http://www.eternallynocturnal.com/images/halloween15.jpg" alt="slide 1" />
+    <img src="https://www.eternallynocturnal.com/images/halloween15.jpg" alt="slide 1" />
   </li>
-  <li class="active">
-    <img src="http://www.eternallynocturnal.com/images/iand.jpg" alt="slide 2" />
+</li>    
+ <li>
+  <img src="https://www.eternallynocturnal.com/images/MaskShirtSlide.png" alt="slide 2" />
 
+</li>  
+  <li >
+  <img src="https://www.eternallynocturnal.com/images/WebsiteAddSlide.png" alt="slide 3" />
+</li>
+
+ 
+
+</li>
+<img src="https://www.eternallynocturnal.com/images/iand.jpg" alt="slide 4" />
+</li>
 </ul>
 
 
 
 
-              <nav class="top-bar" data-topbar>
-                <ul class="title-area">
-                   
-                  <li class="name">
-                    <h1>
-                    </h1>
-                  </li>
-                  <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-                </ul>
-             
-                <section class="top-bar-section">
 
-                  
-                   
+
+
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="https://www.eternallynocturnal.com/store/public/product"><img src="https://www.eternallynocturnal.com/images/mainenheader.png"></a></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+
+
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+  
+
+
                   <ul class="right">
-                    
-                    <li class="divider"></li>
-                    <li class="has-dropdown">
-                      <a href="#">SHOP</a>
-                      <ul class="dropdown">
-                        
                      
-                            @foreach(Productcat::get() as $category)
+
+                    <li class="has-dropdown">
+                      <a a href="https://www.eternallynocturnal.com/store/public/product">SHOP</a>
+                      <ul class="dropdown">
+                            @foreach(ProductCat::get() as $category)
                               
                             <li> <a style="color:#ffffff"{{link_to_route('sortProducts', Str::title($category->name), $category->name)}}</li>
-
+        <li class="divider"></li>
                             @endforeach
+</ul>
                             <li>
 
                             <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" >
@@ -197,8 +203,16 @@
                     <li>
                       <a href="https://www.facebook.com/EternallyNocturnal" target="blank"><i class="fi-social-facebook" style="font-size:20px"></i></a>
                     </li>
-                    
-
+                    <li class="divider"></li>
+                    <li>
+                      <a href="https://instagram.com/eternally_nocturnal/" target="blank"><i class="fi-social-instagram" style="font-size:20px"></i></a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a data-reveal-id="commentPop" ><i class="fi-comment" style="font-size:20px"></i></a>
+                    </li>
+                       
+                    <li class="divider"></li>
                   </ul>
 
                 </section>
@@ -217,17 +231,45 @@
 <div style="min-height:100%;background-color:#000000;">
 
 @yield('content')
+                        {{--COMMENT--}}
 
+                              <div id="commentPop" class="reveal-modal" style="max-width:400px;max-height:60%;background-color:#000000;" data-reveal> 
+                                                        <h1>Send us a message!</h1>
+                                                         {{Form::open(array('route' => 'commentFeedback', 'method' => 'post'))}}
+                                                         <div class="row">
+                                                            <div class="small-12 large-12 columns">
+                                                              {{Form::text('name', '', array('placeholder' => 'Name'))}}
+                                                            </div>
+                                                            
+                                                            <div class="small-12 large-12 columns">
+                                                              {{Form::text('email', '', array('placeholder' => 'An email we can reply to'))}}
+                                                            </div>
+
+                                                            <div class="small-12 large-12 columns">
+                                                              {{Form::textarea('message', '', array('placeholder' => 'Message', 'style' => 'color:#000000;max-height:150px;'))}}
+                                                            </div>
+                                                            <button style="color:#700000;background-color:#000000;font-size:30px"><i class="fi-plus"></i> Send Feedback </button>
+                                                            {{Form::close()}}
+                                                          </div>
+
+                                    <a class="close-reveal-modal">&#215;</a>
+
+
+                                  </div>
+
+                            {{--COMMENT--}}
 </div>
 </center>
 
 
 
-  <script src="http://www.eternallynocturnal.com/store/public/foundation/js/vendor/jquery.js"></script>
-  <script src="http://www.eternallynocturnal.com/store/public/foundation/js/foundation.min.js"></script>
+  <script src="https://www.eternallynocturnal.com/store/public/foundation/js/vendor/jquery.js"></script>
+  <script src="https://www.eternallynocturnal.com/store/public/foundation/js/foundation.min.js"></script>
 
   <script>
     $(document).foundation();
+         $(document).ready(function(){$('#showspecial').foundation('reveal', 'open')});
+    </script>
   </script>
 
 

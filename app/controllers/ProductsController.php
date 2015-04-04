@@ -7,6 +7,21 @@ class ProductsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
+	
+	public function commentFeedback()
+	{
+		Mail::send('emails.feedback', array(), function($message){
+			$message->to('feedback@eternallynocturnal.com', "FEEDBACK FROM ".Input::get('name'))->subject('FEEDBACK');
+		});
+
+		Mail::send('emails.feedbackreply', array(), function($message){
+			$message->to(Input::get('email'), "Thanks for your message ".Input::get('name'))->subject('Thank you for your comments!');
+		});
+
+		return Redirect::route('products.index');
+	}
+
 	public function index()
 	{
 		$products = Product::all();
