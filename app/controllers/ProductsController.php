@@ -162,7 +162,7 @@ class ProductsController extends \BaseController {
 		$product = Product::findOrFail($id);
 
 
-		$validator = Validator::make($data = Input::all(), Product::$rules);
+		$validator = Validator::make($data = Input::except('_token', 'main_image'), Product::$rules);
 
 		if ($validator->fails())
 		{
