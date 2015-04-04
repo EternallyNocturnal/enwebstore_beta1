@@ -24,6 +24,7 @@ Route::post('/SendCommentFeedback', array('as' => 'commentFeedback', 'uses' => '
 
 Route::group(array('prefix' => 'admin/', 'before' => 'auth.basic'), function(){
 	Route::get('productsmanager', array('as' => 'productManager', 'uses' => 'ProductsController@index'));
+	Route::resource('productsadmin', 'ProductsadminsController');
 	Route::resource('bands', 'BandsController');
 	Route::resource('cart', 'CartsController');
 	Route::resource('images', 'ImagessController');

@@ -14,16 +14,16 @@ class CreateInventoriesTable extends Migration {
 	{
 		Schema::create('inventories', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->integer('product_id');
-			$table->integer('xsmall');
-			$table->integer('small');
-			$table->integer('medium');
-			$table->integer('large');
-			$table->integer('xlarge');
-			$table->integer('xxlarge');
-			$table->integer('xxxlarge');
-			$table->integer('onesize');
+			$table->increments('id')->nullable();
+			$table->integer('product_id')->nullable();
+			$table->integer('xsmall')->nullable();
+			$table->integer('small')->nullable();
+			$table->integer('medium')->nullable();
+			$table->integer('large')->nullable();
+			$table->integer('xlarge')->nullable();
+			$table->integer('xxlarge')->nullable();
+			$table->integer('xxxlarge')->nullable();
+			$table->integer('onesize')->nullable();
 			$table->timestamps();
 		});
 	}

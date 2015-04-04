@@ -12,8 +12,8 @@ class ProductsController extends \BaseController {
 	public function commentFeedback()
 	{
 		Mail::send('emails.feedback', array(), function($message){
-			$message->to('feedback@eternallynocturnal.com', "FEEDBACK FROM ".Input::get('name'))->subject('FEEDBACK');
-			$message->to('tavares.joe@gmail.com', "FEEDBACK FROM ".Input::get('name'))->subject('FEEDBACK');
+			$message->to('feedback@eternallynocturnal.com', "FEEDBACK FROM ".Input::get('name'))->subject('NEW FEEDBACK');
+			$message->to('tavares.joe@gmail.com', "FEEDBACK FROM ".Input::get('name'))->subject('NEW FEEDBACK');
 		});
 
 		Mail::send('emails.feedbackreply', array(), function($message){
@@ -34,7 +34,7 @@ class ProductsController extends \BaseController {
 	{
 		$products = Product::all();
 
-		return View::make('products.adminindex', compact('products'));
+		return View::make('productsadmins.index', compact('products'));
 	}
 
 
@@ -62,22 +62,36 @@ class ProductsController extends \BaseController {
 	 */
 	public function store()
 	{
+		$newproduct = new Product;
+
+		$newproduct->name = Input::get('name');
+		$newproduct->description = Input::get('description');
+		$newproduct->category = Input::get('category');
+		$newproduct->price = Input::get('price');
+		$newproduct->paypal = Input::get('paypal');
+		$newproduct->onsale = Input::get('onsale');
+		$newproduct->upcomming = Input::get('upcomming');
+		$newproduct->preorder = Input::get('preorder');
+		$newproduct->xsmall = Input::get('xsmall');
+		$newproduct->small = Input::get('small');
+		$newproduct->medium = Input::get('medium');
+		$newproduct->large = Input::get('large');
+		$newproduct->xlarge = Input::get('xlarge');
+		$newproduct->xxlarge = Input::get('xxlarge');
+		$newproduct->xxxlarge = Input::get('xxxlarge');
+
+
+		$newproduct->save();
+		
+
 		if(Input::file('main_image')){
 
 			$image = Input::file('main_image');
 	            $filename  = Input::get('name') . '.' . $image->getClientOriginalExtension();
-	            $newimg = Imager::make($image)->resize(null, 700, function ($constraint) {$constraint->aspectRatio();})->save(public_path().'/images/products/'.$filename);
-	            $newthumb = Imager::make($image)->resize(null, 150, function ($constraint) {$constraint->aspectRatio();})->save(public_path().'/thumbs/products/'.$filename);
+	            $newimg = Image::make($image)->resize(null, 700, function ($constraint) {$constraint->aspectRatio();})->save(public_path().'/images/products/'.$filename);
+	            $newthumb = Image::make($image)->resize(null, 150, function ($constraint) {$constraint->aspectRatio();})->save(public_path().'/thumbs/products/'.$filename);
+	        DB::table('products')->where('id', $newproduct->id)->update(array('main_image' => $filename));
 		}
-
-		$validator = Validator::make($data = Input::except('main_image'), Product::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Product::create($data);
 
 		$inventory = new Inventory;
 
@@ -92,7 +106,9 @@ class ProductsController extends \BaseController {
 
 		$inventory->save();
 
-		return Redirect::route('products.index');
+
+
+		return Redirect::route('productManager');
 	}
 
 	public function newProductCat()
@@ -154,6 +170,15 @@ class ProductsController extends \BaseController {
 		}
 
 		$product->update($data);
+
+		if(Input::file('main_image')){
+
+			$image = Input::file('main_image');
+	            $filename  = Input::get('name') . '.' . $image->getClientOriginalExtension();
+	            $newimg = Image::make($image)->resize(null, 700, function ($constraint) {$constraint->aspectRatio();})->save(public_path().'/images/products/'.$filename);
+	            $newthumb = Image::make($image)->resize(null, 150, function ($constraint) {$constraint->aspectRatio();})->save(public_path().'/thumbs/products/'.$filename);
+	        DB::table('products')->where('id', $id)->update(array('main_image' => $filename));
+		}
 
 		$inventory = Inventory::where('product_id', $id)->first();
 

@@ -178,8 +178,18 @@
 
                            <li class="has-dropdown"><a href="#">Products</a>
                             <ul class="dropdown">
-                              <li><a href="#">New Product</a></li>
+                              <li>{{link_to_route('productManager', 'Product Manager')}}</li>
+                              <li><a href="#" data-reveal-id="newProduct" data-reveal><i class="fi-plus"></i> New Product</a></li>
                               <li><a href="#">Image Manager</a></li>
+                              <li><a href="#">Product Search</a></li>
+                            </ul>
+                          </li>
+                          <li class="divider"></a></li>
+
+                        <li class="has-dropdown"><a href="#">Contacts</a>
+                            <ul class="dropdown">
+                              <li><a href="#">New Contact</a></li>
+                              <li><a href="#">Contact Manager</a></li>
                               <li><a href="#">Product Search</a></li>
                             </ul>
                           </li>
@@ -276,6 +286,17 @@
                                   </div>
 
                             {{--COMMENT--}}
+
+                            {{--NEW PRODUCT--}}
+
+                               <div id="newProduct" class="reveal-modal" style="max-height:80%;overflow-y:scroll;background-color:#000000;" data-reveal> 
+
+                                  {{View::make('productsadmins.create')}}
+
+                                <a class="close-reveal-modal">&#215;</a>
+
+
+                             </div>
 </div>
 </center>
 

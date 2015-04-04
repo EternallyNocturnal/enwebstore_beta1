@@ -55,7 +55,11 @@
 		<div class="small-12 large-4 columns">
 			{{Form::hidden('upcomming', 0)}}
 			{{Form::checkbox('upcomming')}}<label style="color:#ffffff">Upcomming</label>
-	</div>
+		</div>
+		<div class="small-12 large-4 columns">
+			{{Form::hidden('preorder', 0)}}
+			{{Form::checkbox('preorder')}}<label style="color:#ffffff">Upcomming</label>
+		</div>
 		<div class="small-12 large-4 columns">
 			{{Form::hidden('onsale', 0)}}
 			{{Form::checkbox('onsale')}}<label style="color:#ffffff">On Sale</label>

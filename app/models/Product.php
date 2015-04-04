@@ -29,6 +29,7 @@ class Product extends \Eloquent {
 		'xxlarge',
 		'xxxlarge',
 		'onesize',
+		'main_image',
 		];
 
 		protected $table = 'products';
