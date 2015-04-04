@@ -79,6 +79,19 @@ class ProductsController extends \BaseController {
 
 		Product::create($data);
 
+		$inventory = new Inventory;
+
+		$inventory->xsmall = Input::get('xsmall_inv');
+		$inventory->small = Input::get('small_inv');
+		$inventory->medium = Input::get('medium_inv');
+		$inventory->large = Input::get('large_inv');
+		$inventory->xlarge = Input::get('xlarge_inv');
+		$inventory->xxlarge = Input::get('xxlarge_inv');
+		$inventory->xxxlarge = Input::get('xxxlarge_inv');
+		$inventory->onesize = Input::get('onesize_inv');
+
+		$inventory->save();
+
 		return Redirect::route('products.index');
 	}
 
