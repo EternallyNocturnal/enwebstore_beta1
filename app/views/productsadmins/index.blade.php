@@ -37,7 +37,7 @@
 		@foreach($products as $product)
 
 		<li> <a href="#" data-reveal-id="showProduct_{{$product->id}}" style="color:#700000;background-color:#000000;font-size:30px">
-			  <img src="http://www.eternallynocturnal.com/store/public/images/products/{{$product->main_image}}" style="max-height:700px" />
+			  <img src="//localhost/enwebstore_beta1/public/images/products/{{$product->main_image}}" style="max-height:700px" />
 		</a>
 		<div class="row">
 			<div class="small-12 large-12 columns" style="font-size:10px">
