@@ -19,10 +19,11 @@ Route::filter('auth.basic', function()
 
 
 //+++++++++++++++++++++++GENERAL ROUTES+++++++++++
-Route::resource('products', 'ProductsController');
+Route::get('products', 'ProductsController@publicindex');
 Route::post('/SendCommentFeedback', array('as' => 'commentFeedback', 'uses' => 'ProductsController@commentFeedback'));
 
 Route::group(array('prefix' => 'admin/', 'before' => 'auth.basic'), function(){
+	Route::get('productsmanager', array('as' => 'productManager', 'uses' => 'ProductsController@index'));
 	Route::resource('bands', 'BandsController');
 	Route::resource('cart', 'CartsController');
 	Route::resource('images', 'ImagessController');
@@ -30,7 +31,15 @@ Route::group(array('prefix' => 'admin/', 'before' => 'auth.basic'), function(){
 	Route::resource('shows', 'ShowsController');
 	Route::resource('sales', 'SalesController');
 	Route::resource('revenue', 'RevenuesController');
+	Route::get('/newImage/form', array('as' => 'formnewImage', function(){return View::make('products.newImage');}));
+	Route::put('/updateProducts/{id}', array('as' => 'updateProducts', 'uses' => 'ProductsController@update'));
+	Route::post('/newProduct/make', array('as' => 'newProduct', 'uses' => 'ProductsController@store'));
+	Route::post('/newProductCat/make', array('as' => 'newProductCat', 'uses' => 'ProductsController@newProductCat'));
+	Route::post('/newImage/make', array('as' => 'newImage', 'uses' => 'ImagesController@newImage'));
 });
+
+
+
 
 //----------------------GENERAL ROUTES------------
 

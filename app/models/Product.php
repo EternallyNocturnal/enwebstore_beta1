@@ -4,7 +4,7 @@ class Product extends \Eloquent {
 
 		// Add your validation rules here
 		public static $rules = [
-		'name' => 'required|unique:producers|min:3',
+		'name' => 'required|min:3',
 		'category' => 'required|min:2',
 		'price' => 'required'
 			// 'title' => 'required'
@@ -33,4 +33,19 @@ class Product extends \Eloquent {
 
 		protected $table = 'products';
 
+
+		public function inventories()
+		{
+			return($this->hasMany('Inventory'));
+		}
+
+		public function Sizes($size)
+		{
+			return Product::where('id', $this->id)->pluck($size);
+		}
+
+		public function Inventory($size)
+		{
+			return Inventory::where('product_id', $this->id)->pluck($size);
+		}
 }

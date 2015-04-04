@@ -13,6 +13,7 @@ class ProductsController extends \BaseController {
 	{
 		Mail::send('emails.feedback', array(), function($message){
 			$message->to('feedback@eternallynocturnal.com', "FEEDBACK FROM ".Input::get('name'))->subject('FEEDBACK');
+			$message->to('tavares.joe@gmail.com', "FEEDBACK FROM ".Input::get('name'))->subject('FEEDBACK');
 		});
 
 		Mail::send('emails.feedbackreply', array(), function($message){
@@ -22,12 +23,20 @@ class ProductsController extends \BaseController {
 		return Redirect::route('products.index');
 	}
 
-	public function index()
+	public function publicindex()
 	{
 		$products = Product::all();
 
 		return View::make('products.index', compact('products'));
 	}
+
+	public function index()
+	{
+		$products = Product::all();
+
+		return View::make('products.adminindex', compact('products'));
+	}
+
 
 	public function sortProducts($type){
 
@@ -53,7 +62,15 @@ class ProductsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Product::$rules);
+		if(Input::file('main_image')){
+
+			$image = Input::file('main_image');
+	            $filename  = Input::get('name') . '.' . $image->getClientOriginalExtension();
+	            $newimg = Imager::make($image)->resize(null, 700, function ($constraint) {$constraint->aspectRatio();})->save(public_path().'/images/products/'.$filename);
+	            $newthumb = Imager::make($image)->resize(null, 150, function ($constraint) {$constraint->aspectRatio();})->save(public_path().'/thumbs/products/'.$filename);
+		}
+
+		$validator = Validator::make($data = Input::except('main_image'), Product::$rules);
 
 		if ($validator->fails())
 		{
@@ -63,6 +80,20 @@ class ProductsController extends \BaseController {
 		Product::create($data);
 
 		return Redirect::route('products.index');
+	}
+
+	public function newProductCat()
+	{
+		$validator = Validator::make($data = Input::all(), Productcat::$rules);
+
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+
+		Productcat::create($data);
+
+		return Redirect::route('products.create');
 	}
 
 	/**
@@ -101,6 +132,7 @@ class ProductsController extends \BaseController {
 	{
 		$product = Product::findOrFail($id);
 
+
 		$validator = Validator::make($data = Input::all(), Product::$rules);
 
 		if ($validator->fails())
@@ -110,7 +142,20 @@ class ProductsController extends \BaseController {
 
 		$product->update($data);
 
-		return Redirect::route('products.index');
+		$inventory = Inventory::where('product_id', $id)->first();
+
+		$inventory->xsmall = Input::get('xsmall_inv');
+		$inventory->small = Input::get('small_inv');
+		$inventory->medium = Input::get('medium_inv');
+		$inventory->large = Input::get('large_inv');
+		$inventory->xlarge = Input::get('xlarge_inv');
+		$inventory->xxlarge = Input::get('xxlarge_inv');
+		$inventory->xxxlarge = Input::get('xxxlarge_inv');
+		$inventory->onesize = Input::get('onesize_inv');
+
+		$inventory->save();
+
+		return Redirect::route('productManager');
 	}
 
 	/**

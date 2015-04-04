@@ -8,6 +8,23 @@ class Inventory extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = 
+	[
+			'product_id',
+			'xsmall',
+			'small',
+			'medium',
+			'large',
+			'xlarge',
+			'xxlarge',
+			'xxxlarge',
+			'onesize',
+	];
 
+	protected $table = 'inventories';
+
+	public function product()
+	{
+		return $this->belongsTo('Product');
+	}
 }
