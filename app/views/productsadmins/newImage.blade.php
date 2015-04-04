@@ -5,11 +5,11 @@
 	
 
 <ul class="small-block-grid-2 large-block-grid-3 columns">
-	@foreach(Product::all() as $product)
+	@foreach(Producer::all() as $product)
 <li style="border:1px #ffffff solid;">
 
 {{$product->name}} <br><img src="http://www.eternallynocturnal.com/store/public/thumbs/products/{{$product->name}}.jpg"><br>
-	{{Form::open(array('route' => 'storeImage', 'method' => 'post', 'files' => 'true'))}}
+	{{Form::open(array('route' => 'imager.store', 'method' => 'post', 'files' => 'true'))}}
 	
 			{{Form::hidden('product_id', $product->id)}}
 

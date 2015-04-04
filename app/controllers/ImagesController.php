@@ -9,7 +9,7 @@ class ImagesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$images = Image::all();
+		$images = Imager::all();
 
 		return View::make('images.index', compact('images'));
 	}
@@ -38,7 +38,7 @@ class ImagesController extends \BaseController {
 			'location' => $filename,
 			));
 
-		return Redirect::route('productsmanager.index');
+		return Redirect::route('productManager');
 
 	}
 
@@ -49,14 +49,14 @@ class ImagesController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Image::$rules);
+		$validator = Validator::make($data = Input::all(), Imager::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Image::create($data);
+		Imager::create($data);
 
 		return Redirect::route('images.index');
 	}
@@ -69,7 +69,7 @@ class ImagesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$image = Image::findOrFail($id);
+		$image = Imager::findOrFail($id);
 
 		return View::make('images.show', compact('image'));
 	}
@@ -82,7 +82,7 @@ class ImagesController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$image = Image::find($id);
+		$image = Imager::find($id);
 
 		return View::make('images.edit', compact('image'));
 	}
@@ -95,9 +95,9 @@ class ImagesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$image = Image::findOrFail($id);
+		$image = Imager::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Image::$rules);
+		$validator = Validator::make($data = Input::all(), Imager::$rules);
 
 		if ($validator->fails())
 		{
@@ -117,7 +117,7 @@ class ImagesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Image::destroy($id);
+		Imager::destroy($id);
 
 		return Redirect::route('images.index');
 	}

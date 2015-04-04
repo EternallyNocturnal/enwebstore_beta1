@@ -27,7 +27,8 @@ Route::group(array('prefix' => 'admin/', 'before' => 'auth.basic'), function(){
 	Route::resource('productsadmin', 'ProductsadminsController');
 	Route::resource('bands', 'BandsController');
 	Route::resource('cart', 'CartsController');
-	Route::resource('images', 'ImagessController');
+	Route::resource('images', 'ImagesController');
+	Route::post('images/store', array('as' => 'storeImage', 'uses' => 'ImagesController@newImage'));
 	Route::resource('inventory', 'InventoriesController');
 	Route::resource('shows', 'ShowsController');
 	Route::resource('sales', 'SalesController');
@@ -37,6 +38,7 @@ Route::group(array('prefix' => 'admin/', 'before' => 'auth.basic'), function(){
 	Route::post('/newProduct/make', array('as' => 'newProduct', 'uses' => 'ProductsController@store'));
 	Route::post('/newProductCat/make', array('as' => 'newProductCat', 'uses' => 'ProductsController@newProductCat'));
 	Route::post('/newImage/make', array('as' => 'newImage', 'uses' => 'ImagesController@newImage'));
+	Route::get('/newImage', array('as' => 'shownewImage', 'uses' => 'ImagesController@index'));
 });
 
 

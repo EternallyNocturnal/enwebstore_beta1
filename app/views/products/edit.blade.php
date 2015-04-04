@@ -126,7 +126,7 @@
 		Current Images:<br><img style="max-height:100px" src="http://www.eternallynocturnal.com/store/public/thumbs/products/{{$product->name}}.jpg">
 
 		@foreach(Imager::where('product_id', $product->id)->get() as $imgs)
-			<img src="http://www.eternallynocturnal.com/store/public/thumbs/products/{{$imgs->name}}" style="max-height:100px" />
+			<img src="//localhost/enwebstore_beta1/public/thumbs/products/{{$imgs->name}}" style="max-height:100px" />
 		@endforeach
 
 	</div>

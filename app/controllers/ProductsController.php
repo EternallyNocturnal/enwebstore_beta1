@@ -25,7 +25,7 @@ class ProductsController extends \BaseController {
 
 	public function publicindex()
 	{
-		$products = Product::all();
+		$products = Product::orderBy('price', 'desc')->get();
 
 		return View::make('products.index', compact('products'));
 	}

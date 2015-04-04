@@ -180,7 +180,7 @@
                             <ul class="dropdown">
                               <li>{{link_to_route('productManager', 'Product Manager')}}</li>
                               <li><a href="#" data-reveal-id="newProduct" data-reveal><i class="fi-plus"></i> New Product</a></li>
-                              <li><a href="#">Image Manager</a></li>
+                              <li>{{link_to_route('shownewImage', 'Image Manager')}}</li>
                               <li><a href="#">Product Search</a></li>
                             </ul>
                           </li>
