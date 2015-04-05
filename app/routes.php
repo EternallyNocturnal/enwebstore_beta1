@@ -12,13 +12,7 @@
 */
 
 
-Route::filter('auth.basic', function()
-{
-    return Auth::basic("username");
-});
-
-
-//+++++++++++++++++++++++GENERAL PUBLIC ROUTES+++++++++++
+//+++++++++++++++++++++++GENERAL ROUTES+++++++++++
 Route::get('products', 'ProductsController@publicindex');
 Route::post('/SendCommentFeedback', array('as' => 'commentFeedback', 'uses' => 'ProductsController@commentFeedback'));
 
