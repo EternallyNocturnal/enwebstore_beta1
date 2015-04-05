@@ -7,6 +7,16 @@ class ContactsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
+	public function contactSearch()
+	{
+
+		$contacts = Contact::where(Input::get('type'), 'like', Input::get('search'))->get();
+
+		return View::make('contacts.index', compact('contacts'));
+	}
+
+
 	public function index()
 	{
 		$contacts = Contact::all();
@@ -31,7 +41,7 @@ class ContactsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Contact::$rules);
+		$validator = Validator::make($data = Input::except('_token'), Contact::$rules);
 
 		if ($validator->fails())
 		{

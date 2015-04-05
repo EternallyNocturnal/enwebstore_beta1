@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.adminmaster')
 
 @section('content')
 <div class="row">
@@ -8,7 +8,7 @@
 	@foreach(Product::all() as $product)
 <li style="border:1px #ffffff solid;">
 
-{{$product->name}} <br><img src="http://www.eternallynocturnal.com/store/public/thumbs/products/{{$product->name}}.jpg"><br>
+{{$product->name}} <br><img src="https://www.eternallynocturnal.com/store/public/thumbs/products/{{$product->name}}.jpg"><br>
 	{{Form::open(array('route' => 'storeImage', 'method' => 'post', 'files' => 'true'))}}
 	
 			{{Form::hidden('product_id', $product->id)}}

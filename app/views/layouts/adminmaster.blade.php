@@ -188,16 +188,16 @@
 
                         <li class="has-dropdown"><a href="#">Contacts</a>
                             <ul class="dropdown">
-                              <li><a href="#">New Contact</a></li>
-                              <li><a href="#">Contact Manager</a></li>
-                              <li><a href="#">Product Search</a></li>
+                              <li><a href="#" data-reveal-id="newContact" data-reveal><i class="fi-plus"></i> New Contact</a></li>
+                              <li><a href="#" data-reveal-id="searchContact" data-reveal><i class="fi-plus"></i> Search Contacts</a></li>
+
+                              <li>{{link_to_route('contacts.index', 'Contact Manager')}}</li>
                             </ul>
                           </li>
                           <li class="divider"></a></li>
 
                           </li>
-                           <li><a href="#">Contacts</a></li>
-                           <li class="divider"></a></li>
+                        
                            <li><a href="#">Bands</a></li>
                            <li class="divider"></a></li>
                            <li><a href="#">Shows</a></li>
@@ -297,6 +297,76 @@
 
 
                              </div>
+
+                              {{-- NEW CONTACT--}}
+
+
+                                      <div id="newContact" class="reveal-modal" style="height:700px;max-height:80%;overflow-y:scroll;background-color:#000000;" data-reveal> 
+                                          {{--CONTENT HERE--}}
+
+                                                                  {{View::make('contacts.create')}}
+                                                                  
+                                          {{--END CONTENT--}}
+
+                                      <a class="close-reveal-modal">&#215;</a>
+
+
+                                      </div>
+
+                                  
+                                  {{--NEW CONTACT END--}}
+
+
+                                  {{-- CONTACT SEARCH--}}
+
+
+                                      <div id="searchContact" class="reveal-modal" style="height:270px;max-height:50%;overflow-y:scroll;background-color:#000000;" data-reveal> 
+                                          {{--CONTENT HERE--}}
+
+                                                                <div class="row">
+                                                                    <div class="large-12 columns" style="color:#000000">
+                                                                        
+                                                                        {{Form::open(array('route' => 'contactSearch', 'method' => 'post'))}}
+                                                                        <label>Search by</label>
+                                                                        <select name="type"> 
+                                                                          <option value="f_name">First Name</option>
+                                                                          <option value="nickname">Alias</option>
+                                                                          <option value="l_name">Last Name</option>
+                                                                          <option value="phone">Phone</option>
+
+                                                                        </select>
+
+                                                                        {{Form::text('search')}}
+                                                                        <button  class="fi-magnifying-glass" type="submit" style="color:#700000;background-color:#000000;font-size:30px"></button>
+                                                                        {{Form::close()}}
+                                                                    </div>
+                                                                  
+                                          {{--END CONTENT--}}
+
+                                      <a class="close-reveal-modal">&#215;</a>
+
+
+                                      </div>
+
+                                  
+                                  {{--CONTACT SEARCH END--}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 </center>
 

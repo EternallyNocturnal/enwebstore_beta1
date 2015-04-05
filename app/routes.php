@@ -18,27 +18,48 @@ Route::filter('auth.basic', function()
 });
 
 
-//+++++++++++++++++++++++GENERAL ROUTES+++++++++++
+//+++++++++++++++++++++++GENERAL PUBLIC ROUTES+++++++++++
 Route::get('products', 'ProductsController@publicindex');
 Route::post('/SendCommentFeedback', array('as' => 'commentFeedback', 'uses' => 'ProductsController@commentFeedback'));
 
-Route::group(array('prefix' => 'admin/', 'before' => 'auth.basic'), function(){
+
+//+++++++++++++++++++++++++++++ADMIN ROUTES+++++++++
+Route::group(array('before' => 'auth.basic'), function(){
+
+	//+++++++++++PRODUCTS+++++++++++++++++++++++++++
 	Route::get('productsmanager', array('as' => 'productManager', 'uses' => 'ProductsController@index'));
-	Route::resource('productsadmin', 'ProductsadminsController');
-	Route::resource('bands', 'BandsController');
-	Route::resource('cart', 'CartsController');
-	Route::resource('images', 'ImagesController');
-	Route::post('images/store', array('as' => 'storeImage', 'uses' => 'ImagesController@newImage'));
 	Route::resource('inventory', 'InventoriesController');
-	Route::resource('shows', 'ShowsController');
-	Route::resource('sales', 'SalesController');
-	Route::resource('revenue', 'RevenuesController');
-	Route::get('/newImage/form', array('as' => 'formnewImage', function(){return View::make('products.newImage');}));
-	Route::put('/updateProducts/{id}', array('as' => 'updateProducts', 'uses' => 'ProductsController@update'));
+	Route::resource('productsadmin', 'ProductsadminsController');
 	Route::post('/newProduct/make', array('as' => 'newProduct', 'uses' => 'ProductsController@store'));
 	Route::post('/newProductCat/make', array('as' => 'newProductCat', 'uses' => 'ProductsController@newProductCat'));
+	Route::put('/updateProducts/{id}', array('as' => 'updateProducts', 'uses' => 'ProductsController@update'));
+
+	//+++++++++++BANDS+++++++++++++++++++++++++
+	Route::resource('bands', 'BandsController');
+
+
+	//+++++++++++SHOWS++++++++++++++
+
+	Route::resource('shows', 'ShowsController');
+
+	
+	//++++++++++++COMMERCE++++++++++++++++
+	Route::resource('cart', 'CartsController');
+	Route::resource('sales', 'SalesController');
+	Route::resource('revenue', 'RevenuesController');
+
+	//++++++++++++++IMAGES+++++++++++++++++
+	Route::resource('images', 'ImagesController');
+	Route::post('images/store', array('as' => 'storeImage', 'uses' => 'ImagesController@newImage'));
+	Route::get('/newImage/form', array('as' => 'formnewImage', function(){return View::make('products.newImage');}));
 	Route::post('/newImage/make', array('as' => 'newImage', 'uses' => 'ImagesController@newImage'));
 	Route::get('/newImage', array('as' => 'shownewImage', 'uses' => 'ImagesController@index'));
+	//----------------IMAGES---------------------
+
+	//++++++++++CONTACTS+++++++++++++++++++++++++
+	Route::resource('contacts', 'ContactsController');
+	Route::post('/contact/search', array('as' => 'contactSearch', 'uses' => 'ContactsController@contactSearch'));
+
 });
 
 
