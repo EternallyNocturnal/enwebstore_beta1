@@ -1,4 +1,4 @@
-
+	{{$errors->first()}}
 
 <td style="padding:20px;"><h1>Aavailable Sizes</h1><br>
 	<div class="small-6 large-3 columns">
@@ -39,7 +39,9 @@
 					<tr>
 
 					@endforeach
-					{{$errors->first()}}
-					<button type="submit">sub</button>
+				
+<tr><td colspan="3"><div class="modal-footer">
+	        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
 					
 

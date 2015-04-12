@@ -1,23 +1,19 @@
 
 <td style="color:#000000">
 	
-		<div class="col-12-sm col-6-md ">
+	
 			<label style="color:#ffffff">Product Name</label><br>
-			{{Form::text('name')}}
-		</div>
-
-		<div class="col-12-sm col-6-md ">
-			<label style="color:#ffffff">PayPal ID</label><br>
-			{{Form::text('paypal')}}
-		</div>
-
+			{{Form::text('name')}}<br>
 		
-		<div class="col-12-sm col-6-md ">
+			<label style="color:#ffffff">PayPal ID</label><br>
+			{{Form::text('paypal')}}<br>
+		
 			<label style="color:#ffffff">Product Description</label><br>
 			{{Form::textarea('description', $product->description, array('placeholder' => 'Product Description', 'style' => 'max-height:150px;'))}}
-		</div>
-		<div class="col-12-sm col-6-md ">&nbsp</div>
+			
+		
 </td>
+
 <td style="color:#000000;text-align:left;">
 		<div class="col-12-sm col-6-md ">
 			<label style="color:#ffffff">Price Display</label><br>
@@ -47,8 +43,13 @@
 				{{Form::hidden('onsale', 0)}}
 				{{Form::checkbox('onsale')}}<label style="color:#ffffff">On Sale</label>
 		</div>
-		</div>
+
 	</td>
+	<tr><td colspan="2"><div class="modal-footer">
+	        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+				 
+
 	</center>
 	</div>
 	</div>
