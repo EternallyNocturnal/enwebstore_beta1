@@ -1,84 +1,76 @@
 
-
-
             {{Form::model($contact, array('method' => 'put', 'route' => array('contacts.update', $contact->id)))}}
 
-            
-
-          <div class="row">
-            
-              <div class="large-6 columns"><label style="background-color:#000000;color:#ffffff;">Contact Type</label><div style="color:#000000">
+  <td width="30%">           
+            <label style="color:#ffffff;">Contact Type</label><br>
                 <select name="type">
                 <option value="{{$contact->type}}"><span style="color:#000000">{{Str::title($contact->type)}}</option>
                 <option value="ARTIST">Artist</option>
                 <option value="PHOTOGRAPHER">Photographer</option>
-                </select>
+                </select><br>
 
-                </div>
-              </div>
-            <div class="large-6 columns"><label style="background-color:#000000;color:#ffffff;">Nickname</label>{{Form::text('nickname')}}</div>
-          </div>
-
-
-          {{Form::hidden('state', 'MI')}}
-
-
-          <div class="row">
-            <div class="large-6 columns"><label style="background-color:#000000;color:#ffffff;">First Name</label>{{Form::text('f_name')}}</div>
-            <div class="large-6 columns"><label style="background-color:#000000;color:#ffffff;">Last Name</label>{{Form::text('l_name')}}</div>
-          </div>
+            <label style="color:#ffffff;">Nickname</label><br>
+            {{Form::text('nickname')}}<br>
+        
+            {{Form::hidden('state', 'MI')}}
+            <label style="color:#ffffff;">First Name</label><br>
+            {{Form::text('f_name')}}<br>
+            <label style="color:#ffffff;">Last Name</label><br>
+            {{Form::text('l_name')}}<br>
+          
 
 
 
+        
+            <label style="color:#ffffff;">Street Address</label><br>
+            {{Form::text('street1')}}<br>
 
-          <div class="row">
-            <div class="large-6 columns"><label style="background-color:#000000;color:#ffffff;">Street Address</label>{{Form::text('street1')}}</div>
-            <div class="large-6 columns"><label style="background-color:#000000;color:#ffffff;">Street Address 2</label>{{Form::text('street2')}}</div>
-          </div>
+            <label style="color:#ffffff;">Street Address 2</label><br>
+            {{Form::text('street2')}}<br>
+          
 
 
-          <div class="row">   
-            <div class="large-6 columns"><label style="background-color:#000000;color:#ffffff;">City</label>{{Form::text('city')}}</div>
+          
+            <label style="color:#ffffff;">City</label><br>
+            {{Form::text('city')}}<br>
+
             
-            <div class="large-3 columns"><label style="background-color:#000000;color:#ffffff;">State</label>{{Form::text('state')}}</div>
-            <div class="large-3 columns"><label style="background-color:#000000;color:#ffffff;">Zip Code</label>{{Form::text('zip')}}</div>
-          </div>
+            <label style="color:#ffffff;">State</label><br>
+            {{Form::text('state')}}<br>
 
+            <label style="color:#ffffff;">Zip Code</label><br>
+            {{Form::text('zip')}}<br>
 
-          <div class="row">
-            <div class="large-1 columns"><i style="color:#700000;font-size:30px" class="fi-telephone"></i></div>
-              <div class="large-5 columns">{{Form::text('phone')}}</div>
-            <div class="large-1 columns"><i style="color:#700000;font-size:30px" class="fi-mail"></i></div>
-              <div class="large-5 columns">{{Form::text('email')}}</div>
-          </div>
-
-
-          <div class="row">
             
-            <div class="large-1 columns"><i style="color:#700000;font-size:30px" class="fi-social-facebook"></i></div>
-              <div class="large-5 columns">{{Form::text('facebook')}}</div>
+
+<td>  
             
-            <div class="large-1 columns"><i style="color:#700000;font-size:30px" class="fi-social-twitter"></i></div>
-              <div class="large-5 columns">{{Form::text('twitter')}}</div>
-          </div>
+          <i style="color:#ffffff;font-size:25px" class="fa fa-phone"></i></div>
+              {{Form::text('phone')}}</div>
+            <i style="color:#ffffff;font-size:25px" class="fa fa-envelope"></i></div>
+              {{Form::text('email')}}</div><br><br>
+        
+          
 
-          <div class="row"> 
-            <div class="large-1 columns"><i style="color:#700000;font-size:30px" class="fi-social-instagram"></i></a></div>  
-              <div class="large-5 columns">{{Form::text('instagram')}}</div>
-            <div class="large-1 columns"><i style="color:#700000;font-size:30px" class="fi-link"></i></a></div>    
-              <div class="large-5 columns">{{Form::text('website')}}</div>
+        
+            <i style="color:#ffffff;font-size:25px" class="fa fa-facebook-official"></i></div>
+              {{Form::text('facebook')}}</div>            
+            <i style="color:#ffffff;font-size:25px" class="fa fa-twitter"></i></div>
+              {{Form::text('twitter')}}</div><br><br>
+         
+            <i style="color:#ffffff;font-size:25px" class="fa fa-instagram"></i></a></div>  
+              {{Form::text('instagram')}}</div>
+            <i style="color:#ffffff;font-size:25px" class="fa fa-globe"></i></a></div>    
+              {{Form::text('website')}}</div><br><br>
 
 
-          </div>
-
-          <div class="row" style=" width:80%;">
-            <center style="color:#000000;">
+            <label style="color:#ffffff">Notes</label><br>
             {{Form::textarea('notes', $contact->notes, array('placeholder' => 'Notes...'))}}
-            </center>
+           
           </div>
           <br>
 
 
-          <button type="submit" style="color:#700000;background-color:#000000;font-size:20px"><i class="fi-play-circle"></i> Update {{$contact->f_name}} {{$contact->l_name}}</button>
+          <button type="submit" style="color:#000000;background-color:#ffffff;font-size:20px">Update {{$contact->f_name}} {{$contact->l_name}}</button>
 
           {{Form::close()}}

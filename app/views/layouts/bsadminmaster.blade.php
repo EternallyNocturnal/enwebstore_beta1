@@ -83,7 +83,7 @@
   </style>
 
 {{View::make('layouts.navbar')}}
-
+{{View::make('layouts.modals')}}
 
 
 @yield('content')

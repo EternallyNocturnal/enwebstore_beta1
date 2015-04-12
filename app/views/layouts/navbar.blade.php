@@ -31,7 +31,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contacts <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Contact Manager</a></li>
-            <li><a href="#">Add Contact</a></li>
+            <li><a data-toggle="modal" data-target="#createContact">Add Contact</a></li>
           </ul>
         </li>
       </ul>

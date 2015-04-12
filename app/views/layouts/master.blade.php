@@ -231,6 +231,26 @@
 <div style="min-height:100%;background-color:#000000;">
 
 @yield('content')
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="createContact">Create a new Contact</h4>
+      </div>
+      <div class="modal-body">
+        {{View::make('contacts.modals.create')}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
                         {{--COMMENT--}}
 
                               <div id="commentPop" class="reveal-modal" style="max-width:400px;max-height:60%;background-color:#000000;" data-reveal> 
