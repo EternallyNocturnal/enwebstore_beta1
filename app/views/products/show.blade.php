@@ -1,7 +1,5 @@
 {{$product->name}} - ${{$product->price}}
 
-
-
 <hr>
 <div class="row">
 	<div class="small-12 large-6 columns">
@@ -77,14 +75,25 @@
 
 		</select>
 		@endif
+		<div style="color:#ffffff">
+		
+	</div>
 		<input type="hidden" name="currency_code" value="USD">
 			<button type="submit" value="Add to Cart" name="submit" style="background-color:transparent;color:#ffffff;"><i class="fi-shopping-cart" ></i>
 			</button>
+
+@foreach(Session::get('items') as $sesss)
+{{$sesss}}
+@endforeach
+
 		<br>
 		 <div style="color:#ffffff">{{$product->description}}</div>
 	</div>
 </form>
-
+{{Form::open(array('route' => 'addToCart', 'method' => 'post'))}}
+{{Form::hidden('addID', $product->id)}}
+<button type="submit">AddCart</button>
+{{Form::close()}}
 
 </div></div>
 

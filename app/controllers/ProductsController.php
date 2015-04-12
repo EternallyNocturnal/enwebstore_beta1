@@ -106,10 +106,25 @@ class ProductsController extends \BaseController {
 
 		$inventory->save();
 
+		$price = new Price;
+		
+		$price->product_id = Input::get('product_id');
+		$price->xsmall = Input::get('xsmall_price');
+		$price->small = Input::get('small_price');
+		$price->medium = Input::get('medium_price');
+		$price->large = Input::get('large_price');
+		$price->xlarge = Input::get('xlarge_price');
+		$price->xxlarge = Input::get('xxlarge_price');
+		$price->xxxlarge = Input::get('xxxlarge_price');
+		$price->onesize = Input::get('onesize_price');
+
+		$price->save();
+
 
 
 		return Redirect::route('productManager');
 	}
+
 
 	public function newProductCat()
 	{
@@ -192,6 +207,20 @@ class ProductsController extends \BaseController {
 		$inventory->onesize = Input::get('onesize_inv');
 
 		$inventory->save();
+
+		$price = Price::where('product_id', $id)->first();
+		
+		$price->product_id = $id;
+		$price->xsmall = Input::get('xsmall_price');
+		$price->small = Input::get('small_price');
+		$price->medium = Input::get('medium_price');
+		$price->large = Input::get('large_price');
+		$price->xlarge = Input::get('xlarge_price');
+		$price->xxlarge = Input::get('xxlarge_price');
+		$price->xxxlarge = Input::get('xxxlarge_price');
+		$price->onesize = Input::get('onesize_price');
+
+		$price->save();
 
 		return Redirect::route('productManager');
 	}

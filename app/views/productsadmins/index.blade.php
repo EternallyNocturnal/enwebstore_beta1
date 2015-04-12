@@ -1,60 +1,38 @@
-@extends('layouts.adminmaster')
+@extends('layouts.bsadminmaster')
 
 
 
 @section('content')
+@foreach(Product::all() as $product)
+<table width="100%" style="background-color:transparent">
+	<td 
+		data-toggle="collapse"  href="#collapse{{$product->id}}One" aria-expanded="true" aria-controls="collapse{{$product->id}}One">
+		<div class="panel-group" id="accordion{{$product->id}}" role="tablist" aria-multiselectable="true">
+	  		<div class="panel panel-default" style="border:1px transparent solid;border-radius:95px;padding:15px;color:#000000;">
+	    		
+	         	 <center>
+	        		  <h3 style="color:#000000;">{{$product->name}}</h3>
+	        		  <img src="//localhost/enwebstore_beta1/public/images/products/{{$product->main_image}}" style="max-height:100px" />
+	          	</center>
+    	
+    	<td><div id="collapse{{$product->id}}One" class="panel-collapse collapse" role="tabpanel">
+      <div class="panel-body">
+      	<table>
+      		{{$errors->first()}}
+				{{Form::model($product, array('method' => 'put', 'files' => 'true', 'route' => array('updateProducts', $product->id)))}}
+				       		{{View::make('productsadmins.panels.editproduct')->with('product', $product)}}
+				{{Form::close()}}
+   		</table>
+      </div>
+    </div>
+</div>
 
 
-@foreach($products as $product)
+	</table>
 
 
-
-{{--MODAL CODE HERE--}}
-
-	
-
-	{{--NEW PRODUCT CATEGORY--}}
-
-		<div id="showProduct_{{$product->id}}" class="reveal-modal" style="max-height:80%;overflow-y:scroll;background-color:#000000;" data-reveal> 
-
-	                              {{View::make('products.edit')->with('product', $product)}}
-
-	        <a class="close-reveal-modal">&#215;</a>
-
-
-	      </div>
-
-	{{--END NEW PRODUCT CATEGORY--}}
 @endforeach
 
 
 
-
-{{--END MODAL CODE--}}
-
-
-	<ul class="small-block-grid-2 large-block-grid-3">
-		@foreach($products as $product)
-
-		<li> <a href="#" data-reveal-id="showProduct_{{$product->id}}" style="color:#700000;background-color:#000000;font-size:30px">
-			  <img src="//localhost/enwebstore_beta1/public/images/products/{{$product->main_image}}" style="max-height:700px" />
-		</a>
-		<div class="row">
-			<div class="small-12 large-12 columns" style="font-size:10px">
-				<i>{{Str::title('click to edit details')}}</i>
-			</div>
-			<div class="small-12 large-12 columns">
-			${{$product->price}}
-			</div>
-		</li>
-		@endforeach
-	</ul>
-
-	
-
-
-
-
-
 @stop
-

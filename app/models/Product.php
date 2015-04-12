@@ -49,4 +49,18 @@ class Product extends \Eloquent {
 		{
 			return Inventory::where('product_id', $this->id)->pluck($size);
 		}
+
+		public function PriceTag($size)
+		{
+			return Price::where('product_id', $this->id)->pluck($size);
+		}
+
+		public function CartPrice()
+		{
+			foreach(Session::get('items') as $item)
+				$itemprice = Product::where('id', $item)->pluck('');
+			return;
+		}
+
+	
 }

@@ -13,7 +13,7 @@
 
 
 //+++++++++++++++++++++++GENERAL ROUTES+++++++++++
-Route::get('products', 'ProductsController@publicindex');
+Route::get('products', array('as' => 'PublicIndex', 'uses' => 'ProductsController@publicindex'));
 Route::post('/SendCommentFeedback', array('as' => 'commentFeedback', 'uses' => 'ProductsController@commentFeedback'));
 
 
@@ -41,6 +41,7 @@ Route::group(array('before' => 'auth.basic'), function(){
 	Route::resource('cart', 'CartsController');
 	Route::resource('sales', 'SalesController');
 	Route::resource('revenue', 'RevenuesController');
+	Route::resource('prices', 'PricesController');
 
 	//++++++++++++++IMAGES+++++++++++++++++
 	Route::resource('images', 'ImagesController');
@@ -57,7 +58,7 @@ Route::group(array('before' => 'auth.basic'), function(){
 });
 
 
-
+	Route::post('/cartitems', array('as' => 'addToCart', 'uses' => 'CartsController@addToCart'));
 
 //----------------------GENERAL ROUTES------------
 

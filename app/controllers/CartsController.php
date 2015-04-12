@@ -7,6 +7,16 @@ class CartsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
+	public function addToCart()
+	{
+		$item = Input::get('addID');
+		Session::push('items', $item);
+
+		return Redirect::route('PublicIndex');
+	}
+
+
 	public function index()
 	{
 		$carts = Cart::all();

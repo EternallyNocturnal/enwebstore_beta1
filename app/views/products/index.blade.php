@@ -5,6 +5,8 @@
 @section('content')
 
 
+
+
 @foreach($products as $product)
 
 
@@ -20,7 +22,6 @@
 	                              {{View::make('products.show')->with('product', $product)}}
 
 	        <a class="close-reveal-modal">&#215;</a>
-
 
 	      </div>
 

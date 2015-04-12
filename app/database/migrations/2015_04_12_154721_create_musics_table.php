@@ -16,7 +16,7 @@ class CreateMusicsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('band_id');
-			$table->string('album_name')
+			$table->string('album_name');
 			$table->timestamps();
 		});
 	}
