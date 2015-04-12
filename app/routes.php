@@ -27,7 +27,7 @@ Route::group(array('before' => 'auth.basic'), function(){
 	Route::post('/newProduct/make', array('as' => 'newProduct', 'uses' => 'ProductsController@store'));
 	Route::post('/newProductCat/make', array('as' => 'newProductCat', 'uses' => 'ProductsController@newProductCat'));
 	Route::put('/updateProducts/{id}', array('as' => 'updateProducts', 'uses' => 'ProductsController@update'));
-
+	Route::resource('contacttypes', 'ContacttypesController');
 	//+++++++++++BANDS+++++++++++++++++++++++++
 	Route::resource('bands', 'BandsController');
 

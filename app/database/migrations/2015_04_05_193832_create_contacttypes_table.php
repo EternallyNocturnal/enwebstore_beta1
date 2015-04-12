@@ -15,7 +15,7 @@ class CreateContacttypesTable extends Migration {
 		Schema::create('contacttypes', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('type');
+			$table->string('name');
 			$table->timestamps();
 		});
 	}

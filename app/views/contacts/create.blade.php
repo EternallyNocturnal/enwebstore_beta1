@@ -1,16 +1,20 @@
 {{ Form::open(array('action' => 'ContactsController@store', 'files' => true)) }}
 
-
 <div class="row">
-		<div class="large-6 columns"><div style="color:#000000">
+		<div class="large-5 columns"><div style="color:#000000">
 			<select name="type">
-				<option value="">Choose Contact Type..GENERATE FROM LISTTTTTT..</option>
-				<option value="ARTIST">Artist</option>
-				<option value="PHOTOGRAPHER">Photographer</option>
+				<option value="">Choose Contact Type...</option>
+				@foreach(Contacttype::all() as $conttype)
+				<option value="{{$conttype->type}}">{{$conttype->type}}</option>
+				@endforeach				
 			</select>
-
 			</div>
 		</div>
+		<div class="large-1 columns">
+
+			<a href="#" data-reveal-id="addContacttype">
+				<div style="color:#700000;background-color:#000000;font-size:25px;border:1px #ffffff solid;"><i class="fi-plus"></i></div></a>		
+		</div>	
 	<div class="large-6 columns">{{Form::text('nickname', '', array('placeholder' => 'Alias'))}}</div>
 </div>
 
@@ -77,3 +81,12 @@
 
 <br><br>
 
+
+
+
+
+<div id="addContacttype" class="reveal-modal" style="height:200px;max-with:30%;max-height:80%;overflow-y:scroll;background-color:#000000" data-reveal> 
+        {{View::make('contacttypes.create')}}
+        <a class="close-reveal-modal">&#215;</a>
+
+        </div>

@@ -40,7 +40,7 @@ class ContacttypesController extends \BaseController {
 
 		Contacttype::create($data);
 
-		return Redirect::route('contacttypes.index');
+		return Redirect::back();
 	}
 
 	/**
