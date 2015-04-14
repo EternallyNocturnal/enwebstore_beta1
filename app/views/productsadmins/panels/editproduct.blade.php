@@ -1,4 +1,4 @@
-<table width="100%" class="colorface2" >
+<table width="100%">
 	<div style="padding:10px; margin:15px">
     <td>
       <div class="panel panel-default" style="border:1px transparent solid;border-radius:45px;color:#000000;background-color:#F0f0f0;padding:10px">
