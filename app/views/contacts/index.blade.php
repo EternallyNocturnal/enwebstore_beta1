@@ -34,8 +34,8 @@
 	          	
     	
     	<td>
-    		<div id="collapse{{$contact->id}}One" class="panel-collapse collapse" role="tabpanel">
-     	<table style="text-align:left;width:100%;color:#000000;background-color:#000000;border-radius:35px;padding:30px">
+    		<div id="collapse{{$contact->id}}One" class="panel-collapse collapse" role="tabpanel" style="background-color:#000000; border:3px #ffffff solid;border-radius:35px">
+     	<table style="text-align:left;width:100%;color:#000000;background-color:#000000;border:1px transparent solid;border-radius:35px;padding:30px">
      	 <div class="panel-body">
       	<td width="10%"></td>
       		{{View::make('contacts.panels.editcontacts')->with('contact', $contact)}}

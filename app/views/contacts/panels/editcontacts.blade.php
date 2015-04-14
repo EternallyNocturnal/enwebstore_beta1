@@ -39,7 +39,7 @@
             {{Form::text('state')}}<br>
 
             <label style="color:#ffffff;">Zip Code</label><br>
-            {{Form::text('zip')}}<br>
+            {{Form::text('zip')}}<br><br>
 
             
 
@@ -67,10 +67,15 @@
             <label style="color:#ffffff">Notes</label><br>
             {{Form::textarea('notes', $contact->notes, array('placeholder' => 'Notes...'))}}
            
-          </div>
-          <br>
+        <br>
+        <br>
+<tr>
+        <td colspan="3"><div class="modal-footer">
+
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
 
 
-          <button type="submit" style="color:#000000;background-color:#ffffff;font-size:20px">Update {{$contact->f_name}} {{$contact->l_name}}</button>
 
+      
           {{Form::close()}}
