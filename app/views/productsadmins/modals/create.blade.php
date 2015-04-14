@@ -60,7 +60,7 @@
 {{--Size Options--}}
   
 <td>     
-      <table style="width:100%;text-align:left"">
+      <table style="width:100%;text-align:left">
 
         <th><label class="whiteouttext">Available Sizes</label></th>
         <th><label style="color:#ffffff">Inventory</label><br></th>

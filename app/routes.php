@@ -35,6 +35,7 @@ Route::group(array('before' => 'auth.basic'), function(){
 	//+++++++++++SHOWS++++++++++++++
 
 	Route::resource('shows', 'ShowsController');
+	Route::resource('venues', 'VenuesController');
 
 	
 	//++++++++++++COMMERCE++++++++++++++++
