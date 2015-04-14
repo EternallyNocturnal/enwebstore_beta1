@@ -12,14 +12,14 @@
 
 {{ Form::open(array('action' => 'ContactsController@store', 'files' => true)) }}
 <td>
-<label style="#ffffff">Contact Type</label><br>
+<label style="#ffffff">Contact Type</label><br></li>
 		<div style="color:#000000">
 			<select name="type">
 				<option value="">Choose Contact Type...</option>
 				@foreach(Contacttype::all() as $conttype)
 				<option value="{{$conttype->type}}">{{$conttype->type}}</option>
 				@endforeach				
-			</select><br>
+			</select><br><a class="btn" data-toggle="modal" data-target="#createContactType">Add Contact Type</a><br>
 	{{Form::hidden('state', 'MI')}}
 
 	<label style="color:#ffffff">Alias</label><br>	
@@ -44,7 +44,7 @@
 <td>
 
 
-
+			<div style="color:#000000">
 	 		<i style="color:#ffffff;font-size:25px" class="fa fa-phone"></i>
               {{Form::text('phone', '', array('placeholder' => 'XXX-XXX-XXXX'))}}
             <i style="color:#ffffff;font-size:25px" class="fa fa-envelope"></i>
@@ -66,7 +66,7 @@
 
             <label style="color:#ffffff">Notes</label><br>
             {{Form::textarea('notes', '', array('placeholder' => 'Notes...'))}}<br><br>
-
+</div>
           
 
 

@@ -152,25 +152,3 @@
 </div>
 
 {{Form::close()}}
-
-
-
-
-{{--MODAL CODE HERE--}}
-
-	
-
-	{{--NEW PRODUCT CATEGORY--}}
-
-		<div id="newProductCat" class="reveal-modal" style="max-width:80%;height:200px;overflow-y:scroll;background-color:#000000;" data-reveal> 
-
-	                              {{View::make('products.newProductCat')}}
-
-	        <a class="close-reveal-modal">&#215;</a>
-
-
-	      </div>
-	{{--END NEW PRODUCT CATEGORY--}}
-
-
-{{--END MODAL CODE--}}
