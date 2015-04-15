@@ -22,12 +22,12 @@
 
       	<table>
       		{{$errors->first()}}
-				{{Form::model($product, array('method' => 'put', 'files' => 'true', 'route' => array('updateProducts', $product->id)))}}
+				
 				       		{{View::make('productsadmins.panels.editproduct')->with('product', $product)}}
 				       		{{View::make('productsadmins.subpanels.general')->with('product', $product)}}
 				       		{{View::make('productsadmins.subpanels.inventory')->with('product', $product)}}
 				       		{{View::make('productsadmins.subpanels.images')->with('product', $product)}}
-				{{Form::close()}}
+				
    		</table>
      	 </div>
     	</div>

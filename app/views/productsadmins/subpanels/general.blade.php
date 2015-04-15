@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body" style="background-color:#000000">
       	<table width="100%" style="color:#000000">
-
+{{Form::model($product, array('method' => 'put', 'files' => 'true', 'route' => array('updateProducts', $product->id)))}}
 
 <td style="color:#000000">
 	

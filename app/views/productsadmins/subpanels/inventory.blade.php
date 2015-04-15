@@ -11,7 +11,7 @@
 
 
 	{{$errors->first()}}
-
+{{Form::model($product, array('method' => 'put', 'files' => 'true', 'route' => array('updateProducts', $product->id)))}}
 <td style="padding:20px;"><h1>Aavailable Sizes</h1><br>
 	<div class="small-6 large-3 columns" style=" text-align:left">
 							{{Form::checkbox('onesize', 1, $product->onesize)}}
