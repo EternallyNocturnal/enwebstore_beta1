@@ -1,1 +1,6 @@
-F:\PHP\htdocs\enwebstore_beta1\app/views/shows/index.blade.php
+@foreach(Product::all() as $product)
+
+
+		{{View::make('productsadmins.modals.editproduct')->with('product', $product)}}
+
+@endforeach

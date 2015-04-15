@@ -1,7 +1,16 @@
+<div class="modal fade" id="editContact{{$contact->id}}" tabindex="-1" role="dialog" aria-labelledby="editContact{{$contact->id}}" aria-hidden="true" >
+  <div class="modal-dialog" style="width:60%;color:#ffffff;background-color:#000000">
+    <div class="modal-content" style="background-color:#000000;color:#ffffff">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="editContact{{$contact->id}}" style="background-color:#000000;color:#ffffff">Edit {{$contact->name}}</h4>
+      </div>
+      <div class="modal-body" style="background-color:#000000">
+        <table width="100%" style="color:#000000">
 
             {{Form::model($contact, array('method' => 'put', 'route' => array('contacts.update', $contact->id)))}}
 
-  <td width="30%">           
+        <td width="30%">           
             <label style="color:#ffffff;">Contact Type</label><br>
                 <select name="type">
                 <option value="{{$contact->type}}"><span style="color:#000000">{{Str::title($contact->type)}}</option>
@@ -69,13 +78,22 @@
            
         <br>
         <br>
-<tr>
-        <td colspan="3"><div class="modal-footer">
 
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
 
 
 
       
-          {{Form::close()}}
+          
+  </table>
+  </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        {{Form::close()}}
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+</div>
