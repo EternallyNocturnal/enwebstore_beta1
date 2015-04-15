@@ -18,7 +18,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Products <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li>{{link_to_route('productManager', 'Product Manager')}}</li>
-            <li><a href="#">Add Product</a></li>
+            <li><a data-toggle="modal" data-target="#createProduct" class="btn" style="text-align:left">Add Product</a></li>
             <li class="divider"></li>
             <li><a href="#">Commerce Manager</a></li>
             <li><a href="#">Reports</a></li>
@@ -30,8 +30,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Contacts <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Contact Manager</a></li>
-            <li><a data-toggle="modal" data-target="#createContact">Add Contact</a></li>
+            <li>{{link_to_route('contacts.index', 'Contact Manager')}}</li>
+            <li><a data-toggle="modal" data-target="#createContact" class="btn" style="text-align:left">Add Contact</a></li>createVenue
           </ul>
         </li>
       </ul>
@@ -46,7 +46,7 @@
             <li><a href="#">Add Show</a></li>
             <li class="divider"></li>
             <li><a href="#">Venue Manager</a></li>
-            <li><a href="#">Add Venue</a></li>
+            <li><a data-toggle="modal" data-target="#createVenue" class="btn" style="text-align:left">Add Venue</a></li>
           </ul>
         </li>
       </ul>
@@ -78,3 +78,4 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
