@@ -14,7 +14,7 @@
 	    		
 	         	 <center>
 	        		  <h3 style="color:#000000;">{{$product->name}}</h3>
-	        		  <img src="//localhost/enwebstore_beta1/public/images/products/{{$product->main_image}}" style="max-height:100px" />
+	        		  <img src="https://www.eternallynocturnal.com/store/public/products/{{$product->main_image}}" style="max-height:100px" />
 	          	</center>
     	
     	<td><div id="collapse{{$product->id}}One" class="panel-collapse collapse" role="tabpanel">
