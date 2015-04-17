@@ -179,11 +179,6 @@ class ProductsController extends \BaseController {
 
 		$validator = Validator::make($data = Input::except('_token', 'main_image'), Product::$rules);
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
 		$product->update($data);
 
 		if(Input::file('main_image')){
