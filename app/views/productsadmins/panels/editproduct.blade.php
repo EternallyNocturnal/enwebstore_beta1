@@ -5,11 +5,6 @@
         <center>
          <h4 data-toggle="modal" data-target="#editProduct{{$product->id}}" >{{$product->name}} General Information</h4>
     	   
-  		  </center>
-          <div id="{{$product->id}}-collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body" style="padding:20px; margin:15px;color:#000000;background-color:#000000;border-radius:35px">
-      </div>
-    </div>
   </div>
 </td><tr>
 

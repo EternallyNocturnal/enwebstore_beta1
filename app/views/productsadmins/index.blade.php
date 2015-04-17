@@ -5,7 +5,7 @@
 @section('content')
 
 @foreach(Product::all() as $product)
-<div class="col-md-4">
+<div class="col-md-3">
 <table width="100%" style="background-color:transparent">
 	<td 
 		data-toggle="collapse"  href="#collapse{{$product->id}}One" aria-expanded="true" aria-controls="collapse{{$product->id}}One">
