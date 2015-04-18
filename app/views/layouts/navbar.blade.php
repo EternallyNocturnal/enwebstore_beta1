@@ -45,7 +45,7 @@
             <li><a href="#">Past Shows</a></li>
             <li><a href="#">Add Show</a></li>
             <li class="divider"></li>
-            <li><a href="#">Venue Manager</a></li>
+            <li>{{link_to_route('venues.index', 'Venue Manager')}}</a></li>
             <li><a data-toggle="modal" data-target="#createVenue" class="btn" style="text-align:left">Add Venue</a></li>
           </ul>
         </li>
