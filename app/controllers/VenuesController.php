@@ -31,7 +31,7 @@ class VenuesController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Venue::$rules);
+		$validator = Validator::make($data = Input::except('_token'), Venue::$rules);
 
 		if ($validator->fails())
 		{
@@ -79,7 +79,7 @@ class VenuesController extends \BaseController {
 	{
 		$venue = Venue::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Venue::$rules);
+		$validator = Validator::make($data = Input::except('_token'), Venue::$rules);
 
 		if ($validator->fails())
 		{
