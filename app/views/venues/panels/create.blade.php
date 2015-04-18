@@ -1,9 +1,10 @@
 
 {{Form::open(array('route' => 'venues.store', 'method' => 'post', 'files' => 'true'))}}
-
+<div class="blackouttext">
 	<td>
 		<label class="whiteouttext">Venue Name</label><br>
-		{{Form::text('name', '', array('placeholder' => 'Venue Name'))}}<br>
+
+		{{Form::text('name', '', array('placeholder' => 'Venue Name', 'style' => 'color:#000000'))}}<br>
 	
 
 		<label class="whiteouttext">Select a Contact</label><br>
@@ -16,33 +17,33 @@
 		
 
 	<label class="whiteouttext">Address</label><br>
-		{{Form::text('street_1', '', array('placeholder' => 'Address'))}}<br>
+		{{Form::text('street_1', '', array('placeholder' => 'Address', 'style' => 'color:#000000'))}}<br>
 	
 
 	<label class="whiteouttext">Address 2</label><br>
-		{{Form::text('street_2', '', array('placeholder' => 'Address 2'))}}<br>
+		{{Form::text('street_2', '', array('placeholder' => 'Address 2', 'style' => 'color:#000000'))}}<br>
 	
 
 	<label class="whiteouttext">City</label><br>
-		{{Form::text('city', '', array('placeholder' => 'City'))}}<br>
+		{{Form::text('city', '', array('placeholder' => 'City', 'style' => 'color:#000000'))}}<br>
 	
 
 	<label class="whiteouttext">State</label><br>
-		{{Form::text('state', 'MI', array('placeholder' => 'State'))}}<br>
+		{{Form::text('state', 'MI', array('placeholder' => 'State', 'style' => 'color:#000000'))}}<br>
 	
 
 	<label class="whiteouttext">Zip</label><br>
-		{{Form::text('zip', '', array('placeholder' => 'Zip'))}}<br>
+		{{Form::text('zip', '', array('placeholder' => 'Zip', 'style' => 'color:#000000', 'style' => 'color:#000000'))}}<br>
 	
 
 	<td>
-		<i  style="font-size:25px;color:#ffffff" class="fa fa-envelope"></i> {{Form::text('email', '', array('placeholder' => 'Venue Email'))}}
-		<i  style="font-size:25px;color:#ffffff" class="fa fa-phone"></i> {{Form::text('phone', '', array('placeholder' => 'Venue Phone'))}}<br>
-		<i  style="font-size:25px;color:#ffffff" class="fa fa-trash"></i> {{Form::text('fax', '', array('placeholder' => 'Venue Fax'))}}
-		<i style="font-size:25px;color:#ffffff" class="fa fa-facebook-official"></i> {{Form::text('facebook', '', array('placeholder' => 'Paste Facebook Link Here'))}}<br>
-		<i  style="font-size:25px;color:#ffffff" class="fa fa-twitter"></i> {{Form::text('twitter', '', array('placeholder' => 'Paste Twitter Link Here'))}}
-		<i  style="font-size:25px;color:#ffffff" class="fa fa-instagram"></i> {{Form::text('instagram', '', array('placeholder' => 'Paste Instagram Link Here'))}}<br>
-		<i  style="font-size:25px;color:#ffffff" class="fa fa-globe"></i> {{Form::text('website', '', array('placeholder' => 'Paste Website Link Here'))}}
+		<i  style="font-size:25px;color:#ffffff" class="fa fa-envelope"></i> {{Form::text('email', '', array('placeholder' => 'Venue Email', 'style' => 'color:#000000'))}}
+		<i  style="font-size:25px;color:#ffffff" class="fa fa-phone"></i> {{Form::text('phone', '', array('placeholder' => 'Venue Phone', 'style' => 'color:#000000'))}}<br>
+		<i  style="font-size:25px;color:#ffffff" class="fa fa-trash"></i> {{Form::text('fax', '', array('placeholder' => 'Venue Fax', 'style' => 'color:#000000'))}}
+		<i style="font-size:25px;color:#ffffff" class="fa fa-facebook-official"></i> {{Form::text('facebook', '', array('placeholder' => 'Paste Facebook Link Here', 'style' => 'color:#000000'))}}<br>
+		<i  style="font-size:25px;color:#ffffff" class="fa fa-twitter"></i> {{Form::text('twitter', '', array('placeholder' => 'Paste Twitter Link Here', 'style' => 'color:#000000'))}}
+		<i  style="font-size:25px;color:#ffffff" class="fa fa-instagram"></i> {{Form::text('instagram', '', array('placeholder' => 'Paste Instagram Link Here', 'style' => 'color:#000000'))}}<br>
+		<i  style="font-size:25px;color:#ffffff" class="fa fa-globe"></i> {{Form::text('website', '', array('placeholder' => 'Paste Website Link Here', 'style' => 'color:#000000'))}}
 	
 		<br><br>
 
@@ -55,4 +56,4 @@
 
 	
 
-	
+	</div>
