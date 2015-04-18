@@ -84,6 +84,9 @@ class ProductsController extends \BaseController {
 		$newproduct->save();
 		
 
+		$this->injectNewPrice($newproduct->id);
+		$this->injectNewInventory($newproduct->id);
+
 		if(Input::file('main_image')){
 
 			$image = Input::file('main_image');
@@ -93,32 +96,7 @@ class ProductsController extends \BaseController {
 	        DB::table('products')->where('id', $newproduct->id)->update(array('main_image' => $filename));
 		}
 
-		$inventory = new Inventory;
-
-		$inventory->xsmall = Input::get('xsmall_inv');
-		$inventory->small = Input::get('small_inv');
-		$inventory->medium = Input::get('medium_inv');
-		$inventory->large = Input::get('large_inv');
-		$inventory->xlarge = Input::get('xlarge_inv');
-		$inventory->xxlarge = Input::get('xxlarge_inv');
-		$inventory->xxxlarge = Input::get('xxxlarge_inv');
-		$inventory->onesize = Input::get('onesize_inv');
-
-		$inventory->save();
-
-		$price = new Price;
 		
-		$price->product_id = Input::get('product_id');
-		$price->xsmall = Input::get('xsmall_price');
-		$price->small = Input::get('small_price');
-		$price->medium = Input::get('medium_price');
-		$price->large = Input::get('large_price');
-		$price->xlarge = Input::get('xlarge_price');
-		$price->xxlarge = Input::get('xxlarge_price');
-		$price->xxxlarge = Input::get('xxxlarge_price');
-		$price->onesize = Input::get('onesize_price');
-
-		$price->save();
 
 
 
@@ -190,32 +168,10 @@ class ProductsController extends \BaseController {
 	        DB::table('products')->where('id', $id)->update(array('main_image' => $filename));
 		}
 
-		$inventory = Inventory::where('product_id', $id)->first();
-
-		$inventory->xsmall = Input::get('xsmall_inv');
-		$inventory->small = Input::get('small_inv');
-		$inventory->medium = Input::get('medium_inv');
-		$inventory->large = Input::get('large_inv');
-		$inventory->xlarge = Input::get('xlarge_inv');
-		$inventory->xxlarge = Input::get('xxlarge_inv');
-		$inventory->xxxlarge = Input::get('xxxlarge_inv');
-		$inventory->onesize = Input::get('onesize_inv');
-
-		$inventory->save();
-
-		$price = Price::where('product_id', $id)->first();
 		
-		$price->product_id = $id;
-		$price->xsmall = Input::get('xsmall_price');
-		$price->small = Input::get('small_price');
-		$price->medium = Input::get('medium_price');
-		$price->large = Input::get('large_price');
-		$price->xlarge = Input::get('xlarge_price');
-		$price->xxlarge = Input::get('xxlarge_price');
-		$price->xxxlarge = Input::get('xxxlarge_price');
-		$price->onesize = Input::get('onesize_price');
-
-		$price->save();
+		$this->injectInventory($id);
+		$this->injectPrice($id);
+		
 
 		return Redirect::route('productManager');
 	}
@@ -231,6 +187,73 @@ class ProductsController extends \BaseController {
 		Product::destroy($id);
 
 		return Redirect::route('products.index');
+	}
+
+	public function injectNewPrice($id)
+	{
+		$price = new Price;
+		
+		$price->product_id = $id;
+		$price->xsmall = Input::get('xsmall_price');
+		$price->small = Input::get('small_price');
+		$price->medium = Input::get('medium_price');
+		$price->large = Input::get('large_price');
+		$price->xlarge = Input::get('xlarge_price');
+		$price->xxlarge = Input::get('xxlarge_price');
+		$price->xxxlarge = Input::get('xxxlarge_price');
+		$price->onesize = Input::get('onesize_price');
+
+		$price->save();
+	}
+
+	public function injectPrice($id)
+	{
+		$price = Price::where('product_id', $id)->first();
+		
+		$price->product_id = $id;
+		$price->xsmall = Input::get('xsmall_price');
+		$price->small = Input::get('small_price');
+		$price->medium = Input::get('medium_price');
+		$price->large = Input::get('large_price');
+		$price->xlarge = Input::get('xlarge_price');
+		$price->xxlarge = Input::get('xxlarge_price');
+		$price->xxxlarge = Input::get('xxxlarge_price');
+		$price->onesize = Input::get('onesize_price');
+
+		$price->save();
+	}
+
+	public function injectNewInventory($id)
+	{
+		$inventory = new Inventory;
+
+		$inventory->product_id = $id;
+		$inventory->xsmall = Input::get('xsmall_inv');
+		$inventory->small = Input::get('small_inv');
+		$inventory->medium = Input::get('medium_inv');
+		$inventory->large = Input::get('large_inv');
+		$inventory->xlarge = Input::get('xlarge_inv');
+		$inventory->xxlarge = Input::get('xxlarge_inv');
+		$inventory->xxxlarge = Input::get('xxxlarge_inv');
+		$inventory->onesize = Input::get('onesize_inv');
+
+		$inventory->save();
+	}
+
+	public function injectInventory($id)
+	{
+		$inventory = Inventory::where('product_id', $id)->first();
+
+		$inventory->xsmall = Input::get('xsmall_inv');
+		$inventory->small = Input::get('small_inv');
+		$inventory->medium = Input::get('medium_inv');
+		$inventory->large = Input::get('large_inv');
+		$inventory->xlarge = Input::get('xlarge_inv');
+		$inventory->xxlarge = Input::get('xxlarge_inv');
+		$inventory->xxxlarge = Input::get('xxxlarge_inv');
+		$inventory->onesize = Input::get('onesize_inv');
+
+		$inventory->save();
 	}
 
 }
