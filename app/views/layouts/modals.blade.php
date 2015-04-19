@@ -3,3 +3,4 @@
 {{View::make('productsadmins.modals.create')}}
 {{View::make('productsadmins.modals.createproductcat')}}
 {{View::make('venues.modals.create')}}
+{{View::make('shows.modals.create')}}

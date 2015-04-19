@@ -153,7 +153,7 @@ return array(
 	*/
 
 	'aliases' => array(
-
+		'Carbon'		  => 'Carbon\Carbon',
 		'App'             => 'Illuminate\Support\Facades\App',
 		'Artisan'         => 'Illuminate\Support\Facades\Artisan',
 		'Auth'            => 'Illuminate\Support\Facades\Auth',

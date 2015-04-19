@@ -40,8 +40,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Shows <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Show Manager</a></li>
-            <li><a href="#">Add Show</a></li>
+            <li>{{link_to_route('shows.index', 'Show Manager')}}</li>
+            <li><a data-toggle="modal" data-target="#createShow" class="btn" style="text-align:left">Add Show</a></li>
             <li class="divider"></li>
             <li><a href="#">Past Shows</a></li>
             <li><a href="#">Ticket Manager</a></li>

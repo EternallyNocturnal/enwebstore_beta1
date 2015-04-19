@@ -8,6 +8,18 @@ class Show extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = [
 
+		'venue_id',	
+		'contact_id',	
+		'online_price',	
+		'presale_price',	
+		'door_price',	
+		'presale_count',	
+		'main_image',
+		'start_time',
+		'end_time'
+	];
+
+	protected $table = 'shows';
 }

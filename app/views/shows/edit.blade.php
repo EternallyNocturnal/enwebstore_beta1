@@ -24,16 +24,16 @@
 					<label class="whiteouttext"></label>
 					<select name="venue_id">
 						@foreach(Venue::all() as $venue)
-								<option value="$venue->id">{{$venue->name}}</option>
+								<option value="{{$venue->id}}">{{$venue->name}}</option>
 						@endforeach
 					</select>
 				</div>
 
 				<div class="col-sm-12 col-md-4">
-					<label class="whiteouttext"></label>
+					<label class="whiteouttext">Contact</label>
 					<select name="contact_id">
-						@foreach(Venue::all() as $venue)
-								<option value="$venue->id">{{$venue->name}}</option>
+						@foreach(Contact::all() as $contact)
+								<option value="{{$contact->id}}">@if($contact->nickname){{$contact->nickname}}@endif {{$contact->f_name}} {{$contact->l_name}}</option>
 						@endforeach
 					</select>
 				</div>
