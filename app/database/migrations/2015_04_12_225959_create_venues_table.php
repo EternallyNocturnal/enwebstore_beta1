@@ -30,6 +30,7 @@ class CreateVenuesTable extends Migration {
 			$table->string('instagram');
 			$table->string('linkedin');
 			$table->string('website');
+			$table->integer('capacity');
 			$table->text('notes');
 			$table->timestamps();
 		});

@@ -1,49 +1,37 @@
-	@extends('layouts.bsadminmaster')
-	@section('headr')
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	@stop
+@extends('layouts.bsadminmaster')
+@section('content')
 
-	@section('content')
-			
-			
 
-			<div class="createForm" style="color:#000000;background-color:#000000">
-				<div class="col-sm-12 col-md-4">
-					<label class="whiteouttext"></label>
-					{{Form::text('name', '', array('style' => '', 'placeholder' => 'Name'))}}
-				</div>
-		
-				<div class="col-sm-12 col-md-4">
-					<label class="whiteouttext"></label>
-					<select name="venue_id">
-						@foreach(Venue::all() as $venue)
-								<option value="$venue->id">{{$venue->name}}</option>
-						@endforeach
-					</select>
-				</div>
 
-				<div class="col-sm-12 col-md-4">
-					<label class="whiteouttext"></label>
-					<select name="contact_id">
-						@foreach(Venue::all() as $venue)
-								<option value="$venue->id">{{$venue->name}}</option>
-						@endforeach
-					</select>
-				</div>
+	<script src="http://localhost/enwebstore_beta1/public/calendar/jquery.js"></script>
+	<script src="http://localhost/enwebstore_beta1/public/calendar/jquery.datetimepicker.js"></script>
+	<link rel="stylesheet" href="//localhost/enwebstore_beta1/public/calendar/jquery.datetimepicker.css">
 
-			</div>
+	<div class="col-sm-12 col-md-6">
+		<label class="whiteouttext">Start Time</label><br>
+		<input name="starttime" id="datetimepicker_1" type="text" >
+	</div>
 
-			
-			<input id="starttime" type="text" type="text" class="form-control">
+	<div class="col-sm-12 col-md-6">
+		<label class="whiteouttext">End Time</label><br>
+		<input name="endtime" id="datetimepicker_2" type="text" >
+	</div>
+     @foreach(range(1,10) as $datetimepicker)
+      <script language="javascript">
+      jQuery("#datetimepicker_{{$datetimepicker}}").datetimepicker(
+      	{theme:'dark',
+        	 format:'d.m.Y H:i',
+        	 step:15,
+         	 inline:true
+        });
+      </script>
+    @endforeach
 
-<script>$('#starttime input').datepicker({
-});</script>
+
+
 
 @stop
 
 
-@section('footr')
 
-<script src="{{public_path()}}/js/bootstrap-datepicker.min.js"></script>
 
-@stop

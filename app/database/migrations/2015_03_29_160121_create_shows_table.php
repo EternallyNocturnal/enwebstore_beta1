@@ -17,6 +17,11 @@ class CreateShowsTable extends Migration {
 			$table->increments('id');
 			$table->integer('venue_id');
 			$table->integer('contact_id');
+			$table->string('online_price');
+			$table->string('presale_price');
+			$table->string('door_price');
+			$table->string('presale_count');
+			$table->string('main_image');
 			$table->timestamp('start_time');
 			$table->timestamp('end_time');
 			$table->timestamps();
