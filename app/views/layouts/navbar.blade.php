@@ -41,9 +41,10 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Shows <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Show Manager</a></li>
-            <li><a href="#">Ticket Manager</a></li>
-            <li><a href="#">Past Shows</a></li>
             <li><a href="#">Add Show</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Past Shows</a></li>
+            <li><a href="#">Ticket Manager</a></li>
             <li class="divider"></li>
             <li>{{link_to_route('venues.index', 'Venue Manager')}}</a></li>
             <li><a data-toggle="modal" data-target="#createVenue" class="btn" style="text-align:left">Add Venue</a></li>

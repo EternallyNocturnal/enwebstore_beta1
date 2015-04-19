@@ -1,1 +1,3 @@
-{{Hash::make('put1022')}}
+@foreach($shows as $show)
+
+@endforeach

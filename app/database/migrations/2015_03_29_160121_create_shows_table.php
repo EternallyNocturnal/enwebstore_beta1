@@ -16,6 +16,7 @@ class CreateShowsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('venue_id');
+			$table->integer('contact_id');
 			$table->timestamp('start_time');
 			$table->timestamp('end_time');
 			$table->timestamps();

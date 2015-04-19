@@ -16,6 +16,7 @@ class CreateImagesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('product_id');
+			$table->string('type');
 			$table->string('name');
 			$table->string('location');
 			$table->string('thumblocation');
