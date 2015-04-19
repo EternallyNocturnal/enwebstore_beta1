@@ -1,6 +1,10 @@
 @extends('layouts.bsadminmaster')
 @section('content')
 
+	<script src="http://localhost/enwebstore_beta1/public/calendar/jquery.js"></script>
+	<script src="http://localhost/enwebstore_beta1/public/calendar/jquery.datetimepicker.js"></script>
+	<link rel="stylesheet" href="//localhost/enwebstore_beta1/public/calendar/jquery.datetimepicker.css">
+
 @foreach($shows as $show)
 <div class="col-md-3">
 <table width="100%" style="background-color:transparent">
@@ -12,7 +16,7 @@
 	         	 
 	         	 	<table width="100%">
 	         	 		<center>
-	        		  <h4 data-toggle="modal" data-target="#editVenue{{$show->id}}" >{{$show->name}}</h4>
+	        		  <h4 data-toggle="modal" data-target="#editShow{{$show->id}}" >{{$show->name}}</h4>
 	        			<img src="//localhost/enwebstore_beta1/public/images/products/{{$show->main_image}}" height="200px">
 	        		  </td>
 	        		  </center>
@@ -39,6 +43,8 @@
 </div>
 	</table>
 </div>
+
+{{View::make('shows.modals.edit')->with('show', $show)}}
 @endforeach
 
 

@@ -100,14 +100,24 @@ class ShowsController extends \BaseController {
 	{
 		$show = Show::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Show::$rules);
+		$validator = Validator::make($data = Input::except('_token', 'main_image'), Show::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
+		if(Input::file('main_image')){
+
+			$image = Input::file('main_image');
+	            $filename  = Input::get('name') . '_show.' . $image->getClientOriginalExtension();
+	            $newimg = Image::make($image)->resize(null, 700, function ($constraint) {$constraint->aspectRatio();})->save(public_path().'/images/products/'.$filename);
+	            $newthumb = Image::make($image)->resize(null, 150, function ($constraint) {$constraint->aspectRatio();})->save(public_path().'/thumbs/products/'.$filename);
+	        DB::table('shows')->where('id', $show->id)->update(array('main_image' => $filename));
+		}
+
 		$show->update($data);
+		
 
 		return Redirect::route('shows.index');
 	}
