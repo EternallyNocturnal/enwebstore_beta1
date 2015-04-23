@@ -6,7 +6,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="editProduct{{$product->id}}" style="background-color:#000000;color:#ffffff">Edit {{$product->name}}</h4>
       </div>
-      <div class="modal-body" style="background-color:#000000">
+      <div class="modal-body" style="background-color:#000000;color:#000000">
       	<table width="100%" style="color:#000000">
 {{Form::model($product, array('method' => 'put', 'files' => 'true', 'route' => array('updateProducts', $product->id)))}}
 
