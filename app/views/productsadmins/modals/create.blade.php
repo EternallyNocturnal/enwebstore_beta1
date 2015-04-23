@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="createProduct" style="background-color:#000000;color:#ffffff;border-radius:35px;">Create a new Product</h4>
       </div>
-      <div class="modal-body col-sm-12 col-md-12" style="background-color:#000000">
+      <div class="modal-body col-sm-12 col-md-12" style="background-color:#000000; color:#000000">
         
         <div class="col-sm-12 col-md-5" style="text-align:left">
                     {{Form::open(array('route' => 'newProduct', 'files' => 'true', 'method' => 'post'))}}
@@ -35,36 +35,35 @@
                       @endforeach
                   </select><br>
 
+              
+                  {{Form::checkbox('active', 1)}}<label class="whiteouttext">Active</label><br>
                 
-                  <label class="whiteouttext"></label><br>
-                  {{Form::checkbox('active', 1)}}<label>Active</label>
-                
-                
-                  <label class="whiteouttext"></label><br>
-                  {{Form::checkbox('upcomming', 1)}}<label>Upcomming</label>
+             
+                  {{Form::checkbox('upcomming', 1)}}<label class="whiteouttext">Upcomming</label><br>
                 
                 
-                  <label class="whiteouttext"></label><br>
-                  {{Form::checkbox('onsale', 1)}}<label>On Sale</label><br><br>
+                  {{Form::checkbox('onsale', 1)}}<label class="whiteouttext">On Sale</label><br><br>
+
+                  {{Form::checkbox('preorder', 1)}}<label class="whiteouttext">Pre-Order</label><br><br>
                   
-                  <label>Main Image</label><br>
+                  <label class="whiteouttext">Main Image</label><br>
                       {{Form::file('main_image')}}
         </div>
 
 
 
 
-          <div class="col-sm-12 col-md-6">
+          <div class="col-sm-12 col-md-6 ">
             <div class="col-sm-12 col-md-4" style="text-align:left">
               <label class="whiteouttext">Available Sizes</label><br>
                 {{Form::hidden('onesize', 0)}}
               @foreach(Size::select('size')->distinct()->get() as $size)
                 {{Form::hidden($size->size, 0)}}
                 <input type="checkbox" name="{{$size->size}}" value="1">       
-                <label>{{Str::title($size->size)}}</label><br> 
+                <label class="whiteouttext">{{Str::title($size->size)}}</label><br> 
               @endforeach
               {{Form::checkbox('onesize', 1)}}
-              <label>One Size Only</label>
+              <label class="whiteouttext">One Size Only</label>
             </div>
 
             <div class="col-sm-12 col-md-4">

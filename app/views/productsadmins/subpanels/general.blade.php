@@ -44,11 +44,14 @@
 				{{Form::hidden('active', 0)}}
 				{{Form::checkbox('active')}}<label style="color:#ffffff">Active</label><br>
 			
-				{{Form::hidden('preorder', 0)}}
-				{{Form::checkbox('preorder')}}<label style="color:#ffffff">Upcomming</label><br>
-			
 				{{Form::hidden('onsale', 0)}}
 				{{Form::checkbox('onsale')}}<label style="color:#ffffff">On Sale</label><br>
+
+				{{Form::hidden('upcomming', 0)}}
+				{{Form::checkbox('upcomming')}}<label style="color:#ffffff">Upcomming</label><br>
+				
+				{{Form::hidden('preorder', 0)}}
+				{{Form::checkbox('preorder')}}<label style="color:#ffffff">Pre Order</label><br>
 		
 </td>
 	</table>

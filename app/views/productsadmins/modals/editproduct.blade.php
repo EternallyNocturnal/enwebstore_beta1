@@ -57,17 +57,22 @@
 		</div>
 
 		<div class="small-12 large-12 columns">&nbsp</div>
-			<div class="small-12 large-4 columns">
+			<div class="small-12 large-3 columns">
 				{{Form::hidden('active', 0)}}
 				{{Form::checkbox('active')}}<label style="color:#ffffff">Active</label>
 			</div>
-			<div class="small-12 large-4 columns">
+			<div class="small-12 large-3 columns">
 				{{Form::hidden('preorder', 0)}}
 				{{Form::checkbox('preorder')}}<label style="color:#ffffff">Upcomming</label>
 			</div>
-			<div class="small-12 large-4 columns">
+			<div class="small-12 large-3 columns">
 				{{Form::hidden('onsale', 0)}}
 				{{Form::checkbox('onsale')}}<label style="color:#ffffff">On Sale</label>
+			</div>
+			<div class="small-12 large-3 columns">
+				{{Form::hidden('preorder', 0)}}
+				{{Form::checkbox('preorder')}}<label style="color:#ffffff">Pre Order</label>
+			</div>
 		</div>
 
 	</center>

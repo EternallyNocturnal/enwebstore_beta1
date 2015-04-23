@@ -69,6 +69,7 @@ class ProductsController extends \BaseController {
 		$newproduct->category = Input::get('category');
 		$newproduct->price = Input::get('price');
 		$newproduct->paypal = Input::get('paypal');
+		$newproduct->active = Input::get('active');
 		$newproduct->onsale = Input::get('onsale');
 		$newproduct->upcomming = Input::get('upcomming');
 		$newproduct->preorder = Input::get('preorder');
