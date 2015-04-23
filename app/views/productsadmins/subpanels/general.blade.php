@@ -1,4 +1,3 @@
-<td style="color:#000000">
 <div class="modal fade" id="editProduct{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="editProduct{{$product->id}}" aria-hidden="true" >
   <div class="modal-dialog" style="width:100%;max-width:800px;color:#ffffff;background-color:#000000">
     <div class="modal-content" style="background-color:#000000;color:#ffffff">

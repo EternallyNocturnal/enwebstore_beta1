@@ -1,10 +1,10 @@
 
-<div class="modal fade" id="editInventory{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="editProduct{{$product->id}}" aria-hidden="true" >
+<div class="modal fade" id="editInventory{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="editInventory{{$product->id}}" aria-hidden="true" >
   <div class="modal-dialog" style="width:100%;max-width:800px;color:#ffffff;background-color:#000000">
     <div class="modal-content" style="background-color:#000000;color:#ffffff">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="editProduct{{$product->id}}" style="background-color:#000000;color:#ffffff">Edit {{$product->name}}</h4>
+        <h4 class="modal-title" id="editInventory{{$product->id}}" style="background-color:#000000;color:#ffffff">Edit {{$product->name}}</h4>
       </div>
       <div class="modal-body" style="background-color:#000000;color:#000000">
       	<table width="100%" style="color:#000000">
@@ -30,7 +30,7 @@
 			<h1>Inventory</h1><br>
 			@foreach(Size::select('size')->distinct()->get() as $size)
 				<label style="color:#ffffff">{{$size->size}} Inventory</label><br>
-				{{Form::text($size->size."_inv", $product->Inventory($size->size))}}
+				{{Form::text($size->size."_inv", $product->Inventory($size->size))}}<br>
 			@endforeach
 			<label style="color:#ffffff">One Size Only Inventory</label><br>
 			{{Form::text('onesize_inv', $product->Inventory('onesize'))}}
