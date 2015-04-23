@@ -13,7 +13,7 @@
 	  		<div class="panel panel-default" style="border:1px transparent solid;border-radius:95px;padding:15px;color:#000000;">
 	    		
 	         	 <center>
-	        		  <h3 style="color:#000000;">{{$product->name}}</h3>
+	        		  <h3 style="font-size:large;color:#000000;">{{$product->name}}</h3>
 	        		  <img src="https://www.eternallynocturnal.com/store/public/images/products/{{$product->main_image}}" style="max-height:300px" />
 	          	</center>
     	
