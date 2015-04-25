@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+
+
 <div style="width:100%:height:100%;">
 	<?php $pricetag = 0;?>
 	@foreach($wholecarts as $cart)
@@ -27,11 +29,25 @@
 			<?php $pricetag = $pricetag + $cart->checkoutPrice();?>
 
 		</div>
+
+
+		
 	@endforeach
+
+
 </div>
 
-<button class="button secondary">${{substr($pricetag,0,-2)}}.{{substr($pricetag,-2)}}<br> CHECKOUT</button>
+@if($pricetag > 0)
+{{Form::open(array('route' => 'checkOut', 'method' => 'post'))}}
+{{Form::hidden('checkoutAmt', $pricetag)}}
 
+<button type="submit" class="button secondary">${{substr($pricetag,0,-2)}}.{{substr($pricetag,-2)}}<br> CHECKOUT</button>
+{{Form::close()}}
+@else
+<div style="min-height:800px">
+THERE DOESNT SEEM TO BE ANYTHING IN YOUR CARTE! SHOPPE HARDER!
+</div>
+@endif
 
 @stop
 

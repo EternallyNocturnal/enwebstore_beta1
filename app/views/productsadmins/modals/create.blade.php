@@ -38,11 +38,9 @@
               
                   {{Form::checkbox('active', 1)}}<label class="whiteouttext">Active</label><br>
                 
-             
                   {{Form::checkbox('upcomming', 1)}}<label class="whiteouttext">Upcomming</label><br>
                 
-                
-                  {{Form::checkbox('onsale', 1)}}<label class="whiteouttext">On Sale</label><br><br>
+                  {{Form::checkbox('onsale', 1)}}<label class="whiteouttext">On Sale</label><br>
 
                   {{Form::checkbox('preorder', 1)}}<label class="whiteouttext">Pre-Order</label><br><br>
                   

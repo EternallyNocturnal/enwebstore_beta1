@@ -89,4 +89,4 @@
         {{View::make('contacttypes.create')}}
         <a class="close-reveal-modal">&#215;</a>
 
-        </div>
+</div>

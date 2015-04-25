@@ -1,4 +1,7 @@
 <?php
+Use \Stripe\Stripe;
+Use \Stripe\Charge;
+Use \Stripe\Error;
 
 class CartsController extends \BaseController {
 
@@ -8,10 +11,48 @@ class CartsController extends \BaseController {
 	 * @return Response
 	 */
 
+	public function processPayment()
+	{
+				// Set your secret key: remember to change this to your live secret key in production
+				// See your keys here https://dashboard.stripe.com/account/apikeys
+				Stripe::setApiKey("sk_test_6Xjx7CIZfR3MqgsQKNsVF1vf");
+
+				// Get the credit card details submitted by the form
+				$token = Input::get('stripeToken');
+
+		// Create the charge on Stripe's servers - this will charge the user's card
+		try {
+		$charge = Charge::create(array(
+		  "amount" => Input::get('data-description'), // amount in cents, again
+		  "currency" => "usd",
+		  "source" => $token,
+		  "description" => "payinguser@example.com")
+		);
+	} catch(\Stripe\Error\Card $e) {
+	  // The card has been declined
+	}
+			Session::forget('cart_id');
+			Session::forget('paymentAmt');
+			return View::make('carts.Success');
+	}
+
+
+
+	public function checkOut()
+	{
+		$checkoutAmt = Input::get('checkoutAmt');
+		Session::put('checkoutAmt', $checkoutAmt);
+		return Redirect::route('shippings.create');
+	}
+
 	public function addToCart()
 	{	
 		// Session::forget('cart_id');
-		$customer_id = Input::get('_token');
+		if(Session::get('cart_id')){
+			$customer_id = Session::get('cart_id');
+		}else{
+		$customer_id = Str::random(50);
+		}
 		$item = Input::get('addID');
 		$size = Input::get('size');
 
@@ -30,7 +71,7 @@ class CartsController extends \BaseController {
 			$cart->save();
 		}else{
 			$cart = new Cart;
-			$cart->customer_id = Input::get('_token');
+			$cart->customer_id = $customer_id;
 			$cart->item = Input::get('addID');
 			$cart->size = Input::get('size');
 			$cart->quantity = 1;
