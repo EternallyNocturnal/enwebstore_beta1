@@ -9,19 +9,63 @@ class CartsController extends \BaseController {
 	 */
 
 	public function addToCart()
-	{
+	{	
+		// Session::forget('cart_id');
+		$customer_id = Input::get('_token');
 		$item = Input::get('addID');
-		Session::push('items', $item);
+		$size = Input::get('size');
 
+		Session::put('cart_id', $customer_id);
+
+		if(Cart::where('customer_id', $customer_id)->where('item', $item)->where('size', $size)->pluck('quantity')){
+			$quantit = Cart::where('customer_id', $customer_id)->where('item', $item)->where('size', $size)->pluck('quantity');
+
+			$cart = Cart::where('customer_id', $customer_id)->where('item', $item)->where('size', $size)->first();
+
+			$cart->customer_id = $customer_id;
+			$cart->item = $item;
+			$cart->size = $size;
+			$cart->quantity = $quantit+1;
+
+			$cart->save();
+		}else{
+			$cart = new Cart;
+			$cart->customer_id = Input::get('_token');
+			$cart->item = Input::get('addID');
+			$cart->size = Input::get('size');
+			$cart->quantity = 1;
+
+			$cart->save();
+		}
+		return Redirect::route('PublicIndex');
+	}
+
+	public function removeFromCart()
+	{
+		$item = Input::get('remID');
+		$customer_id = Session::get('cart_id');
+			Cart::destroy($item);
+
+		return Redirect::route('PublicIndex');
+	}
+	
+	public function emptyCart()
+	{
+		$customer_id = Session::get('cart_id');
+		foreach(Cart::where('customer_id', $customer_id)->get() as $cart){
+			Cart::destroy($cart->id);
+		} 
 		return Redirect::route('PublicIndex');
 	}
 
 
+
+
 	public function index()
 	{
-		$carts = Cart::all();
+		$wholecarts = Cart::where('customer_id', Session::get('cart_id'))->get();
 
-		return View::make('carts.index', compact('carts'));
+		return View::make('carts.index', compact('wholecarts'));
 	}
 
 	/**

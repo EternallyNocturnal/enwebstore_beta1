@@ -40,6 +40,11 @@ Route::group(array('before' => 'auth.basic'), function(){
 	
 	//++++++++++++COMMERCE++++++++++++++++
 	Route::resource('cart', 'CartsController');
+	Route::post('/cartitems', array('as' => 'addToCart', 'uses' => 'CartsController@addToCart'));
+	Route::post('/cartitems/empty', array('as' => 'emptyCart', 'uses' => 'CartsController@emptyCart'));
+	Route::post('/cartitems/remove', array('as' => 'removeFromCart', 'uses' => 'CartsController@removeFromCart'));
+
+
 	Route::resource('sales', 'SalesController');
 	Route::resource('revenue', 'RevenuesController');
 	Route::resource('prices', 'PricesController');
@@ -59,7 +64,7 @@ Route::group(array('before' => 'auth.basic'), function(){
 });
 
 
-	Route::post('/cartitems', array('as' => 'addToCart', 'uses' => 'CartsController@addToCart'));
+	
 
 //----------------------GENERAL ROUTES------------
 

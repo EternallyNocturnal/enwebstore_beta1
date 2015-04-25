@@ -82,9 +82,6 @@
 			<button type="submit" value="Add to Cart" name="submit" style="background-color:transparent;color:#ffffff;"><i class="fi-shopping-cart" ></i>
 			</button>
 
-@foreach(Session::get('items') as $sesss)
-{{$sesss}}
-@endforeach
 
 		<br>
 		 <div style="color:#ffffff">{{$product->description}}</div>
@@ -92,7 +89,12 @@
 </form>
 {{Form::open(array('route' => 'addToCart', 'method' => 'post'))}}
 {{Form::hidden('addID', $product->id)}}
+{{Form::hidden('size', 'small')}}<!--------TEST DATA REMOVE------>
 <button type="submit">AddCart</button>
+{{Form::close()}}
+<br>
+{{Form::open(array('route' => 'emptyCart', 'method' => 'post'))}}
+<button type="submit">Empty Cart</button>
 {{Form::close()}}
 
 </div></div>
