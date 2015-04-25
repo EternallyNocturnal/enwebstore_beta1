@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('content')
-<?php $checkoutAmt = Session::get('checkoutAmt');?>
+<?php $checkoutAmt = Session::get('checkoutAmt');
+      $customer = Shipping::where('cart_id', Session::get('cart_id'))->first();
+?>
+{{$customer->ship_f_name}}<br>
 
   {{Form::open(array('route' => 'processPayment', 'method' => 'post'))}}
 	{{Form::hidden('data-description', $checkoutAmt)}}

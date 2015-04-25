@@ -46,6 +46,8 @@ Route::group(array('before' => 'auth.basic'), function(){
 	Route::post('/cartitems/remove', array('as' => 'removeFromCart', 'uses' => 'CartsController@removeFromCart'));
 	Route::post('/checkout', array('as' => 'checkOut', 'uses' => 'CartsController@checkOut'));
 	Route::get('/shipping/makeCCPayment', array('as' => 'makeCCPayment', 'uses' => 'ShippingsController@makeCCPayment'));
+	Route::get('/transSuccess', array('as' => 'transSuccess', 'uses' => 'ShippingsController@transSuccess'));
+	Route::get('/alreadyPaid', array('as' => 'alreadyPaid', 'uses' => 'ShippingsController@alreadyPaid'));
 
 	Route::post('/processPayment', array('as' => 'processPayment', 'uses' => 'CartsController@processPayment'));
 

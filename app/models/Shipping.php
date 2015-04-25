@@ -5,6 +5,13 @@ class Shipping extends \Eloquent {
 	// Add your validation rules here
 	public static $rules = [
 		// 'title' => 'required'
+			'email' => 'required|email',
+			'ship_f_name' => 'required|min:3',
+			'ship_l_name' =>'required|min:3',
+			'ship_address1' =>'required|min:7',
+			'ship_city' =>'required|min:2',
+			'ship_state' =>'required|min:2',
+			'ship_zip' =>'required|min:5'
 	];
 
 	// Don't forget to fill this array

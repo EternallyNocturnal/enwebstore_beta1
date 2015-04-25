@@ -21,9 +21,20 @@ class ShippingsController extends \BaseController {
 	 */
 	public function create()
 	{
-var_dump(Session::all());
 
 		return View::make('shippings.create');
+	}
+
+	public function transSuccess()
+	{
+
+		return View::make('carts.Success');
+	}
+
+	public function alreadyPaid()
+	{
+		
+		return View::make('carts.alreadyPaid');
 	}
 
 	/**
@@ -33,6 +44,12 @@ var_dump(Session::all());
 	 */
 	public function store()
 	{
+
+		if(Shipping::where('cart_id', Session::get('cart_id'))->pluck('payment_status') == 'Paid'){
+				return Redirect::route('alreadyPaid');
+		}elseif(Shipping::where('cart_id', Session::get('cart_id'))->pluck('cart_id') > ''){
+			return Redirect::route('makeCCPayment');
+		}else{
 		$validator = Validator::make($data = Input::all(), Shipping::$rules);
 
 		if ($validator->fails())
@@ -43,6 +60,7 @@ var_dump(Session::all());
 		Shipping::create($data);
 
 		return Redirect::route('makeCCPayment');
+		}
 	}
 
 	public function makeCCPayment()

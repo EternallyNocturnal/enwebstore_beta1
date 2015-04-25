@@ -93,9 +93,7 @@
 <button type="submit">AddCart</button>
 {{Form::close()}}
 <br>
-{{Form::open(array('route' => 'emptyCart', 'method' => 'post'))}}
-<button type="submit">Empty Cart</button>
-{{Form::close()}}
+
 
 </div></div>
 

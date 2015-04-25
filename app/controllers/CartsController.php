@@ -13,6 +13,10 @@ class CartsController extends \BaseController {
 
 	public function processPayment()
 	{
+
+		if(Shipping::where('cart_id', Session::get('cart_id'))->pluck('payment_status') == 'Paid'){
+				return Redirect::route('alreadyPaid');
+			}else{
 				// Set your secret key: remember to change this to your live secret key in production
 				// See your keys here https://dashboard.stripe.com/account/apikeys
 				Stripe::setApiKey("sk_test_6Xjx7CIZfR3MqgsQKNsVF1vf");
@@ -26,16 +30,23 @@ class CartsController extends \BaseController {
 		  "amount" => Input::get('data-description'), // amount in cents, again
 		  "currency" => "usd",
 		  "source" => $token,
-		  "description" => "payinguser@example.com")
+		  "description" => Session::get('cart_id'))
 		);
 	} catch(\Stripe\Error\Card $e) {
 	  // The card has been declined
 	}
+
+			$markPaid = Shipping::where('cart_id', Session::get('cart_id'))->first();
+			$markPaid->payment_status = 'Paid';
+			$markPaid->shipped_status = 'Not Shipped';
+
+			$markPaid->save();
+
 			Session::forget('cart_id');
 			Session::forget('paymentAmt');
-			return View::make('carts.Success');
+			return Redirect::route('transSuccess');
+		}
 	}
-
 
 
 	public function checkOut()
@@ -92,10 +103,7 @@ class CartsController extends \BaseController {
 	
 	public function emptyCart()
 	{
-		$customer_id = Session::get('cart_id');
-		foreach(Cart::where('customer_id', $customer_id)->get() as $cart){
-			Cart::destroy($cart->id);
-		} 
+		Session::forget('cart_id');
 		return Redirect::route('PublicIndex');
 	}
 
