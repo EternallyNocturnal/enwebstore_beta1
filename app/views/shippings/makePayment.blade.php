@@ -7,7 +7,7 @@
 <div class="small-12 large-12 columns">
 
 {{Form::open(array('route' => 'shippings.edit', 'method' => 'get'))}}
- Please verify the information below is correct before entring your credit card details
+ <h2 style="color:#ffffff">Please verify the information below is correct before entring your credit card details</h2>
 {{Form::close()}}
 
 </div>

@@ -20,7 +20,8 @@
 				{{Form::hidden($size->size, 0)}}
 				{{Form::checkbox($size->size)}}
 				<label style="color:#ffffff">{{Str::title($size->size)}}</label><br>
-			@endforeach						
+			@endforeach	
+			{{Form::hidden('onesize', 0)}}					
 			{{Form::checkbox('onesize', 1, $product->onesize)}}
 			<label style="color:#ffffff">One Size Only</label><br>
 		</div>

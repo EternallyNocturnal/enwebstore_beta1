@@ -14,9 +14,7 @@ class CartsController extends \BaseController {
 	public function processPayment()
 	{
 
-		if(Shipping::where('cart_id', Session::get('cart_id'))->pluck('payment_status') == 'Paid'){
-				return Redirect::route('alreadyPaid');
-			}else{
+	
 				// Set your secret key: remember to change this to your live secret key in production
 				// See your keys here https://dashboard.stripe.com/account/apikeys
 				Stripe::setApiKey("sk_test_6Xjx7CIZfR3MqgsQKNsVF1vf");
@@ -26,6 +24,9 @@ class CartsController extends \BaseController {
 
 		// Create the charge on Stripe's servers - this will charge the user's card
 		try {
+			if(Shipping::where('cart_id', Session::get('cart_id'))->pluck('payment_status') == 'Paid'){
+				return Redirect::route('alreadyPaid');
+			}
 		$charge = Charge::create(array(
 		  "amount" => Input::get('data-description'), // amount in cents, again
 		  "currency" => "usd",
@@ -35,22 +36,34 @@ class CartsController extends \BaseController {
 	} catch(\Stripe\Error\Card $e) {
 	  // The card has been declined
 	}
-
+			$cart_id = Session::get('cart_id');
 			$markPaid = Shipping::where('cart_id', Session::get('cart_id'))->first();
 			$markPaid->payment_status = 'Paid';
 			$markPaid->shipped_status = 'Not Shipped';
-
 			$markPaid->save();
+			
+			Mail::send('emails.Newsale', array('cart' => $cart_id, 'customer' => Shipping::where('cart_id', $cart_id)->first()), function($message){
+				$checkoutAmt = Session::get('checkoutAmt');
+				$message->to(Shipping::where('cart_id', Session::get('cart_id'))->pluck('email'))->subject("Your Eternally Nocturnal Order");
+			});
+			Mail::send('emails.Newsaleadmin', array('cart' => $cart_id, 'customer' => Shipping::where('cart_id', $cart_id)->first()), function($message){
+				$checkoutAmt = Session::get('checkoutAmt');
+				$message->to('billing@eternallynocturnal.com')->subject("NEW SALE $".substr($checkoutAmt,0,-2).".".substr($checkoutAmt,-2));
+			});
+
 
 			Session::forget('cart_id');
-			Session::forget('paymentAmt');
+			Session::forget('checkoutAmt');
 			return Redirect::route('transSuccess');
 		}
-	}
+	
 
 
 	public function checkOut()
 	{
+		if(Shipping::where('cart_id', Session::get('cart_id'))->pluck('payment_status') == 'Paid'){
+			return Redirect::route('alreadyPaid');}
+		
 		$checkoutAmt = Input::get('checkoutAmt');
 		Session::put('checkoutAmt', $checkoutAmt);
 		return Redirect::route('shippings.create');
@@ -98,7 +111,7 @@ class CartsController extends \BaseController {
 		$customer_id = Session::get('cart_id');
 			Cart::destroy($item);
 
-		return Redirect::route('PublicIndex');
+		return Redirect::route('cart.index');
 	}
 	
 	public function emptyCart()

@@ -5,10 +5,10 @@
 
 <div style="width:100%:height:100%;min-height:900px;">
 	<?php $pricetag = 0;
-		  $shipcounter = 0;
+
 	?>
 	@foreach($wholecarts as $cart)
-		<div class="row" style="width:80%;border:1px #ffffff solid;border-radius:35px">
+		<div class="row" style="width:80%;border:1px #ffffff solid;border-radius:35px;border-left:transparent;border-right:transparent">
 			<div class="small-12 large-9 columns">
 
 				{{$cart->findItemProp('Name')}}<br>
@@ -29,7 +29,7 @@
 			</div>
 
 			<?php $pricetag = $pricetag + $cart->checkoutPrice();
-				  $shipcounter++;
+
 			?>
 
 		</div>
@@ -39,21 +39,26 @@
 	@endforeach
 
 @if($pricetag > 0)
+<div style="color:#f0f0f0;font-size:16px">Item total: ${{substr($pricetag,0,-2)}}.{{substr($pricetag,-2)}}</div>
 
 <?php 
+
+	$shipcounter = $wholecarts->sum('quantity');
 	if($shipcounter > 1){
-	$shipcost = ($shipcounter / 2) * 599;
+		$shipcost = round((($shipcounter / 2) * 599),0);
 	}else{
 		$shipcost = 599;
 	}
-	$pricetag = $pricetag + round($shipcost,0);
+
+	$pricetag = $pricetag + $shipcost;
 ?>
 
+<div style="color:#f0f0f0;font-size:16px">Shipping total: ${{substr($shipcost,0,-2)}}.{{substr($shipcost,-2)}}</div>
 
 {{Form::open(array('route' => 'checkOut', 'method' => 'post'))}}
 {{Form::hidden('checkoutAmt', $pricetag)}}
 
-<button type="submit" style="border-radius:45px" class="button small">${{substr($pricetag,0,-2)}}.{{substr($pricetag,-2)}}<br>Check Out</button>
+<button type="submit" style="border-radius:45px" class="button small alert">${{substr($pricetag,0,-2)}}.{{substr($pricetag,-2)}}<br>Check Out</button>
 
 {{Form::close()}}
 <br><br>

@@ -1,11 +1,27 @@
-F:\PHP\htdocs\enwebstore_beta1\app/views/shippings/index.blade.php
+@extends('layouts.master')
+@section('content')
+<?php $cart = 'KrPwbW7jdXujol9If0UlSo0PPZfNcVC1ihq4FTNf';?>
+
+<table width="100%">
+
+	<th>Item</th>
+	<th>Quantity</th>
+	<th>Size</th><tr>
+@foreach(Cart::where('customer_id', $cart)->get() as $items)
+	
 
 
-@foreach($shippings as $shipping)
-{{$shipping->email}}
+<td>{{$items->findItemProp('Name')}}	
+<td>{{$items->quantity}}
+<td>{{$items->size}}
+<tr>
+	
+	
+	
+	
+
 @endforeach
 
-@foreach(Cart::where('customer_id', 'bqDsn0BjWOmhS2rMykiPPqtG2lXMD1qdbDQ49cXDRyo4TyYhtu')->get() as $cart)
-{{$cart}}
+</table>
 
-@endforeach
+@stop

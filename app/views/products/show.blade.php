@@ -1,15 +1,17 @@
 {{$product->name}} - ${{$product->price}}
 
+
+
 <hr>
-<div class="row">
-	<div class="small-12 large-6 columns">
+<div class="row"><div class="large-2 columns">&nbsp</div>
+	<div class="small-12 large-8 columns">
 	
-		<ul class="example-orbit" style="color:#ffffff;min-height:350px;max-width:300px" data-orbit >
+		<ul class="example-orbit" style="color:#ffffff;min-height:350px;max-width:250px" data-orbit >
 		  <li>
 		  	
 
-	<a href="#" data-reveal-id="image_popout_main" >	
-		<img src="http://www.eternallynocturnal.com/store/public/images/products/{{$product->name}}.jpg" style="max-height:400px" />
+	<a href="#" data-reveal-id="image_popout_main{{$product->id}}" >	
+		<img src="https://www.eternallynocturnal.com/store/public/images/products/{{$product->name}}.jpg" style="max-height:400px" />
 	</a>
 		  </li>
 	
@@ -17,7 +19,7 @@
 		 	
 		 		 		  <li>
 		 		 		  	<a href="#" data-reveal-id="image_popout_{{$imgs->id}}" >
-		 		 		    <img src="http://www.eternallynocturnal.com/store/public/images/products/{{$imgs->name}}" style="max-height:400px" alt="{{$imgs->name}}" />
+		 		 		    <img src="https://www.eternallynocturnal.com/store/public/images/products/{{$imgs->name}}" style="max-height:400px" alt="{{$imgs->name}}" />
 		 		 		    </a> 
 		 		 			
 		 		 
@@ -32,116 +34,53 @@
 		  </ul>
 		
 		</div>
-	<div class="small-12 large-6 columns" style="color:#ffffff">
-		<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="{{$product->paypal}}">
-<input type="hidden" name="on0" value="Sizes:"><div class="blackouttext">
+	<div class="small-12 large-12 columns" style="color:#ffffff">
 
 
-@if($product->onesize == 1)<div style="color:#ffffff;">One Size Only</diV>
-			@else
-		<select name="os0" style="max-width:50%">
-			
 
-			@if($product->xsmall == 1)
-			<option value="XSmall">X-Small</option>
-			@endif
-
-			@if($product->small == 1)
-			<option value="Small">Small</option>
-			@endif
-
-			@if($product->medium == "1")
-			<option value="Medium">Medium</option>
-			@endif
-
-			@if($product->large == "1")
-			<option value="Large">Large</option>
-			@endif
-
-			@if($product->xlarge == "1")
-			<option value="X-Large">X-Large</option>
-			@endif
-
-			@if($product->xxlarge == "1")
-			<option value="XX-Large">XX-Large</option>
-			@endif
-
-			@if($product->xxxlarge == "1")
-			<option value="XXX-Large">XXX-Large</option>
-			@endif
-
-
-		</select>
-		@endif
-		<div style="color:#ffffff">
-		
-	</div>
-		<input type="hidden" name="currency_code" value="USD">
-			<button type="submit" value="Add to Cart" name="submit" style="background-color:transparent;color:#ffffff;"><i class="fi-shopping-cart" ></i>
-			</button>
-
-
-		<br>
-		 <div style="color:#ffffff">{{$product->description}}</div>
-	</div>
-</form>
 {{Form::open(array('route' => 'addToCart', 'method' => 'post'))}}
 {{Form::hidden('addID', $product->id)}}
 
-
-
-
-@if($product->onesize == 1)One Size Only
+			@if($product->onesize == 1)One Size Only
 			{{Form::hidden('size', 'onesize')}}
 			@else
 		<select name="size" style="color:#000000;max-width:50%">
 			
 
 			@if($product->xsmall == 1)
-			<option value="XSmall">X-Small</option>
+			<option value="xsmall">X-Small</option>
 			@endif
 
 			@if($product->small == 1)
-			<option value="Small">Small</option>
+			<option value="small">Small</option>
 			@endif
 
 			@if($product->medium == "1")
-			<option value="Medium">Medium</option>
+			<option value="medium">Medium</option>
 			@endif
 
 			@if($product->large == "1")
-			<option value="Large">Large</option>
+			<option value="large">Large</option>
 			@endif
 
 			@if($product->xlarge == "1")
-			<option value="X-Large">X-Large</option>
+			<option value="xlarge">X-Large</option>
 			@endif
 
 			@if($product->xxlarge == "1")
-			<option value="XX-Large">XX-Large</option>
+			<option value="xxlarge">XX-Large</option>
 			@endif
 
 			@if($product->xxxlarge == "1")
-			<option value="XXX-Large">XXX-Large</option>
+			<option value="xxxlarge">XXX-Large</option>
 			@endif
 
 
 		</select>
 		@endif
-
-
-
-
-
-
-
-
-
-
-
-<button type="submit">AddCart</button>
+<br>
+<br>
+<button type="submit" style="border-radius:45px" class="button small alert">Add to Cart</button>
 {{Form::close()}}
 <br>
 
@@ -159,7 +98,7 @@
 @foreach(Imager::where('product_id', $product->id)->get() as $imgs)
 
 
- 			<div id="image_popout_{{$imgs->id}}" class="reveal-modal" style="max-width:80%;overflow-y:scroll;background-color:#000000;" data-reveal> 
+ 			<div id="image_popout_{{$imgs->id}}" class="reveal-modal" style="width:100%;max-width:500px;overflow-y:scroll;background-color:#000000;" data-reveal> 
 		 		 
 		 		 	                		<img src="http://www.eternallynocturnal.com/store/public/images/products/{{$imgs->name}}" style="max-height:700px" />
 		 		 	                        <div style="color:#ffffff">{{$product->description}}</div>
@@ -174,7 +113,7 @@
 
 
 
-		<div id="image_popout_main" class="reveal-modal" style="max-width:80%;overflow-y:scroll;background-color:#000000;" data-reveal> 
+		<div id="image_popout_main{{$product->id}}" class="reveal-modal" style="width:100%;max-width:500px;overflow-y:scroll;background-color:#000000;" data-reveal> 
 
 			                              <img src="http://www.eternallynocturnal.com/store/public/images/products/{{$product->name}}.jpg" style="max-height:700px" />
 			                              <div style="color:#ffffff">{{$product->description}}</div>

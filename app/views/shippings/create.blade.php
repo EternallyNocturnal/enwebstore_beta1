@@ -67,7 +67,7 @@
 @endif
 
 
-<button type="submit" style="border-radius:45px" class="button small">Check Out</button>
+<button type="submit" style="border-radius:45px" class="button alert small">Check Out</button>
 {{Form::close()}}
 
 </div>

@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'feedback@eternallynocturnal.com', 'name' => 'Eternally Nocturnal Customer Service'),
+	'from' => array('address' => 'feedback@eternallynocturnal.com', 'name' => 'Eternally Nocturnal Web'),
 
 	/*
 	|--------------------------------------------------------------------------
