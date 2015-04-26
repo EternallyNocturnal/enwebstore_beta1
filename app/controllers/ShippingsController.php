@@ -91,11 +91,11 @@ class ShippingsController extends \BaseController {
 			$cart->phone = Input::get('phone');
 			$cart->ship_f_name = Input::get('ship_f_name');
 			$cart->ship_l_name = Input::get('ship_l_name');
-			$cart->address1 = Input::get('ship_address1');
-			$cart->address2 = Input::get('ship_address2');
-			$cart->city = Input::get('ship_city');
-			$cart->state = Input::get('ship_state');
-			$cart->zip = Input::get('ship_zip');
+			$cart->ship_address1 = Input::get('ship_address1');
+			$cart->ship_address2 = Input::get('ship_address2');
+			$cart->ship_city = Input::get('ship_city');
+			$cart->ship_state = Input::get('ship_state');
+			$cart->ship_zip = Input::get('ship_zip');
 			$cart->cart_amt = Session::get('checkoutAmt');
 
 			$cart->save();
