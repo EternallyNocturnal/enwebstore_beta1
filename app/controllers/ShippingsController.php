@@ -23,11 +23,29 @@ class ShippingsController extends \BaseController {
 	public function findCustomerEmail(){
 		$customer = Customer::where('email', Input::get('email'))->first();
 
-		if (Hash::check(Input::get('password'), $customer->password))
-			{
-				$shipping = Shipping::where('email', Input::get('email'))->first();
-			    return View::make('shippings.makePayment')->with('customer', $shipping);
+				if (Hash::check(Input::get('password'), $customer->password))
+					{
+							$shipping = Shipping::where('email', Input::get('email'))->first();
+							$newshipping = new Shipping;
+
+							$newshipping->email = $shipping->email;
+							$newshipping->phone = $shipping->phone;
+							$newshipping->ship_f_name = $shipping->ship_f_name;
+							$newshipping->ship_l_name = $shipping->ship_l_name;
+							$newshipping->ship_address1 = $shipping->ship_address1;
+							$newshipping->ship_address2 = $shipping->ship_address2;
+							$newshipping->ship_city = $shipping->ship_city;
+							$newshipping->ship_state = $shipping->ship_state;
+							$newshipping->ship_zip = $shipping->ship_zip;
+							$newshipping->cart_id = Session::get('cart_id');
+							$newshipping->cart_amt = Session::get('checkoutAmt');
+
+							$newshipping->save();
+
+				
+			    return View::make('shippings.makePayment')->with('customer', $newshipping);
 			}
+
 		return Redirect::back();
 	}
 
@@ -66,6 +84,7 @@ class ShippingsController extends \BaseController {
 		if(Shipping::where('cart_id', Session::get('cart_id'))->pluck('payment_status') == 'Paid'){
 				return Redirect::route('alreadyPaid');
 		}elseif(Shipping::where('cart_id', Session::get('cart_id'))->pluck('cart_id') > ''){
+
 			$cart = Shipping::where('cart_id', Session::get('cart_id'))->first();
 
 			$cart->email = Input::get('email');

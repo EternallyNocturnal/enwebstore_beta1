@@ -41,6 +41,15 @@ class CartsController extends \BaseController {
 			$markPaid->payment_status = 'Paid';
 			$markPaid->shipped_status = 'Not Shipped';
 			$markPaid->save();
+
+			//inventorytime
+			foreach(Cart::where('customer_id', $cart_id)->get() as $purgeCarts)
+			{	
+				$inventory = Inventory::where('product_id', $purgeCarts->item)->pluck($purgeCarts->size);
+				$newsize = $inventory - $purgeCarts->quantity;
+				DB::table('inventories')->where('product_id', $purgeCarts->item)->update(array($purgeCarts->size => $newsize));
+			}
+
 			
 			Mail::send('emails.Newsale', array('cart' => $cart_id, 'customer' => Shipping::where('cart_id', $cart_id)->first()), function($message){
 				$checkoutAmt = Session::get('checkoutAmt');

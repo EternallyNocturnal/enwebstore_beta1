@@ -41,9 +41,8 @@
 
 <div class="small-12 large-12 columns">
 <label style="whiteouttext">Total including shipping</label>
-${{substr($customer->cart_amt,0,-2)}}.{{substr($customer->cart_amt,-2)}}
+${{substr(Session::get('checkoutAmt'),0,-2)}}.{{substr(Session::get('checkoutAmt'),-2)}}
 </div>
-
 
 <hr>
   {{Form::open(array('route' => 'processPayment', 'method' => 'post'))}}
