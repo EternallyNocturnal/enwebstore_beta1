@@ -19,9 +19,15 @@ class ShippingsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
 
+	public function goBack(){
+		return Redirect::back();
+	}
+	public function create()
+	{	
+		if(Shipping::where('cart_id', Session::get('cart_id'))->pluck('cart_id') > ''){
+		return Redirect::route('shippings.edit');
+		}
 		return View::make('shippings.create');
 	}
 
@@ -33,7 +39,7 @@ class ShippingsController extends \BaseController {
 
 	public function alreadyPaid()
 	{
-		
+
 		return View::make('carts.alreadyPaid');
 	}
 
@@ -48,7 +54,23 @@ class ShippingsController extends \BaseController {
 		if(Shipping::where('cart_id', Session::get('cart_id'))->pluck('payment_status') == 'Paid'){
 				return Redirect::route('alreadyPaid');
 		}elseif(Shipping::where('cart_id', Session::get('cart_id'))->pluck('cart_id') > ''){
-			return Redirect::route('makeCCPayment');
+			$cart = Shipping::where('cart_id', Session::get('cart_id'))->first();
+
+			$cart->email = Input::get('email');
+			$cart->phone = Input::get('phone');
+			$cart->ship_f_name = Input::get('ship_f_name');
+			$cart->ship_l_name = Input::get('ship_l_name');
+			$cart->address1 = Input::get('ship_address1');
+			$cart->address2 = Input::get('ship_address2');
+			$cart->city = Input::get('ship_city');
+			$cart->state = Input::get('ship_state');
+			$cart->zip = Input::get('ship_zip');
+			$cart->cart_amt = Session::get('checkoutAmt');
+
+			$cart->save();
+
+			return  Redirect::route('makeCCPayment');
+
 		}else{
 		$validator = Validator::make($data = Input::all(), Shipping::$rules);
 
@@ -88,9 +110,9 @@ class ShippingsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit()
 	{
-		$shipping = Shipping::find($id);
+		$shipping = Shipping::where('cart_id', Session::get('cart_id'))->first();
 
 		return View::make('shippings.edit', compact('shipping'));
 	}
@@ -103,7 +125,7 @@ class ShippingsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$shipping = Shipping::findOrFail($id);
+		$shipping = Shipping::where('cart_id', $id)->first();
 
 		$validator = Validator::make($data = Input::all(), Shipping::$rules);
 
@@ -114,7 +136,7 @@ class ShippingsController extends \BaseController {
 
 		$shipping->update($data);
 
-		return Redirect::route('shippings.index');
+		return Redirect::route('makeCCPayment');
 	}
 
 	/**

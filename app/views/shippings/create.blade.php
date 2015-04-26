@@ -62,11 +62,12 @@
 <div class="row">
 @if(Session::get('checkoutAmt'))
 {{Form::hidden('cart_id', Session::get('cart_id'))}}
-<h2>Total with shipping: ${{substr(Session::get('checkoutAmt'),0,-2)}}.{{substr(Session::get('checkoutAmt'),-2)}}</h2>
+{{Form::hidden('cart_amt', Session::get('checkoutAmt'))}}
+<h2 class="whiteouttext">Total with shipping: ${{substr(Session::get('checkoutAmt'),0,-2)}}.{{substr(Session::get('checkoutAmt'),-2)}}</h2>
 @endif
 
 
-<button>Submit</button>
+<button type="submit" style="border-radius:45px" class="button small">Check Out</button>
 {{Form::close()}}
 
 </div>

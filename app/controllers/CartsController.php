@@ -103,6 +103,7 @@ class CartsController extends \BaseController {
 	
 	public function emptyCart()
 	{
+		Session::forget('checkoutAmt');
 		Session::forget('cart_id');
 		return Redirect::route('PublicIndex');
 	}
