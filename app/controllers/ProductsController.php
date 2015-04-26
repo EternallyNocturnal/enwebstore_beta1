@@ -40,7 +40,12 @@ class ProductsController extends \BaseController {
 
 	public function sortProducts($type){
 
-		$products = Product::where('category', $type)->get();
+		if($type == 'Sale'){
+			$products = Product::where('onsale', 1)->get();
+		}else{
+			$products = Product::where('category', $type)->get();
+		}
+			
 
 		return View::make('products.index', compact('products'));
 	}

@@ -8,6 +8,13 @@ class Customer extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = [
+	'username',
+	'password',
+	'email',
+	'contact_id'
+	];
 
+
+	protected $table = 'customers';
 }

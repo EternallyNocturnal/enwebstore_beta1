@@ -4,23 +4,41 @@
 
 
 <h2>{{$errors->first()}}</h2>
-{{Form::open(array('route' => 'shippings.store', 'method' => 'post'))}}
-<div style="background-color:#000000;width:100%;max-width:700px;height:100%;min-height:800px;">
+<div style="background-color:#000000;width:100%;max-width:700px;height:100%;min-height:1000px;">
+If you've shopped with us before we can probably find your address by email.
+	{{Form::open(array('route' => 'findCustomerEmail', 'method' => 'post'))}}
+<div class="small-12 large-5 columns">
+	{{Form::text('email', '', array('placeholder' => 'Email'))}}
+</div>
+	
+<div class="small-8 large-5 columns">
+	{{Form::password('password', '', array('placeholder' => 'Password'))}}
+</div>
+		<button class="button tiny alert" type="submit">Use Email</button>
+	{{Form::close()}}
 
+
+
+
+{{Form::open(array('route' => 'shippings.store', 'method' => 'post'))}}
 	<div class="small-12 large-12 columns">
-		<div class="small-12 large-6 columns">
+		<div class="small-6 large-4 columns">
 
 		<label style="color:#ffffff">Email Address*</label>
 		{{Form::text('email', '', array('placeholder' => 'Email'))}}
-
-
+		</div>
+		
+		<div class="small-6 large-4 columns">
+		<label style="color:#ffffff">Password <i style="font-size:10px">for returning visits</i></label>
+			{{Form::text('password', '', array('placeholder' => 'Password'))}}
 		</div>
 
-		<div class="small-12 large-6 columns">
+
+
+		<div class="small-12 large-4 columns">
 		<label style="color:#ffffff">Phone</label>
 		{{Form::text('phone', '', array('placeholder' => 'Phone Number'))}}
-	</div>
-
+		</div>
 
 
 	
@@ -63,7 +81,7 @@
 @if(Session::get('checkoutAmt'))
 {{Form::hidden('cart_id', Session::get('cart_id'))}}
 {{Form::hidden('cart_amt', Session::get('checkoutAmt'))}}
-<h2 class="whiteouttext">Total with shipping: ${{substr(Session::get('checkoutAmt'),0,-2)}}.{{substr(Session::get('checkoutAmt'),-2)}}</h2>
+<h2 style="color:#f0f0f0">Total with shipping: ${{substr(Session::get('checkoutAmt'),0,-2)}}.{{substr(Session::get('checkoutAmt'),-2)}}</h2>
 @endif
 
 

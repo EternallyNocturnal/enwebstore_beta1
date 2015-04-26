@@ -20,9 +20,21 @@ class ShippingsController extends \BaseController {
 	 * @return Response
 	 */
 
+	public function findCustomerEmail(){
+		$customer = Customer::where('email', Input::get('email'))->first();
+
+		if (Hash::check(Input::get('password'), $customer->password))
+			{
+				$shipping = Shipping::where('email', Input::get('email'))->first();
+			    return View::make('shippings.makePayment')->with('customer', $shipping);
+			}
+		return Redirect::back();
+	}
+
 	public function goBack(){
 		return Redirect::back();
 	}
+
 	public function create()
 	{	
 		if(Shipping::where('cart_id', Session::get('cart_id'))->pluck('cart_id') > ''){
@@ -72,7 +84,7 @@ class ShippingsController extends \BaseController {
 			return  Redirect::route('makeCCPayment');
 
 		}else{
-		$validator = Validator::make($data = Input::all(), Shipping::$rules);
+		$validator = Validator::make($data = Input::except('_token', 'password'), Shipping::$rules);
 
 		if ($validator->fails())
 		{
@@ -81,14 +93,22 @@ class ShippingsController extends \BaseController {
 
 		Shipping::create($data);
 
+		if(Input::get('password'))
+		{
+			if(Customer::where('email', Input::get('email'))->pluck('id') == Null)
+			{
+				Customer::create(array('username' => Input::get('email'), 'password' => Hash::make(Input::get('password')), 'email' => Input::get('email')));
+			}
+		}
+
 		return Redirect::route('makeCCPayment');
 		}
 	}
 
 	public function makeCCPayment()
 	{
-
-		return View::make('shippings.makePayment');
+		$customer = Shipping::where('cart_id', Session::get('cart_id'))->first();
+		return View::make('shippings.makePayment')->with('customer', $customer);
 	}
 
 	/**

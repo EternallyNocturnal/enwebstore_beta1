@@ -3,6 +3,7 @@
 
 
 <hr>
+{{$product->description}}
 <div class="row"><div class="large-2 columns">&nbsp</div>
 	<div class="small-12 large-8 columns">
 	

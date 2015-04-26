@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <?php $checkoutAmt = Session::get('checkoutAmt');
-      $customer = Shipping::where('cart_id', Session::get('cart_id'))->first();
+      ;
 ?>
 <div style="background-color:#000000; min-height:900px">
 <div class="small-12 large-12 columns">

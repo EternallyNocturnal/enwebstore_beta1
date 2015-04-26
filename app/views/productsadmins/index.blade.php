@@ -7,7 +7,7 @@
 		  				<div class="panel panel-default" style="border:1px transparent solid;border-radius:95px;padding:15px;color:#000000;">
 		    		
 				         	 <center>
-				        		  <a data-toggle="modal" data-target="#ProductDetail{{$product->id}}"><h3 style="font-size:large;color:#000000;">{{$product->name}}</h3></a>
+				        		  <a data-toggle="modal" data-target="#ProductDetail{{$product->id}}"><div style="font-size:medium;color:#000000;background-color:#ffffff;border-radius:35px">{{$product->name}}</div></a>
 				        		   <a data-toggle="modal" data-target="#ProductDetail{{$product->id}}"><img src="https://www.eternallynocturnal.com/store/public/images/products/{{$product->main_image}}" style="max-height:300px" /></a>
 				          	</center>
 			    		

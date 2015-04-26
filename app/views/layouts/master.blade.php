@@ -169,19 +169,23 @@
                      
 
                     <li class="has-dropdown">
-                      <a a href="https://www.eternallynocturnal.com/store/public/product">SHOP</a>
+                      <a a href="#">Shop</a>
                       <ul class="dropdown">
+        <li class="divider"></li>
+                            <li><a a href="https://www.eternallynocturnal.com/store/public/product">Everything</a></li>
                             @foreach(ProductCat::get() as $category)
                               
                             <li> <a style="color:#ffffff"{{link_to_route('sortProducts', Str::title($category->name), $category->name)}}</li>
         <li class="divider"></li>
                             @endforeach
+        <li class="divider"></li>
+                            <li> <a style="color:#ffffff"{{link_to_route('sortProducts', 'On Sale', 'Sale')}}</li>
 </ul>
                             <li>
 
                               
 
-                              <a href="{{URL::to('cart')}}"><i class="fi-shopping-cart">  </i></a>
+                              <a href="{{URL::to('cart')}}"><i class="fi-shopping-cart"></i> View Cart</a>
                              
                             </li>                          
                       </ul>

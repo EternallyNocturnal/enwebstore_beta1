@@ -48,6 +48,7 @@ Route::group(array('before' => 'auth.basic'), function(){
 	Route::get('/shipping/makeCCPayment', array('as' => 'makeCCPayment', 'uses' => 'ShippingsController@makeCCPayment'));
 	Route::get('/transSuccess', array('as' => 'transSuccess', 'uses' => 'ShippingsController@transSuccess'));
 	Route::get('/alreadyPaid', array('as' => 'alreadyPaid', 'uses' => 'ShippingsController@alreadyPaid'));
+	Route::post('/findCustomerEmail', array('as' => 'findCustomerEmail',  'uses' => 'ShippingsController@findCustomerEmail'));
 
 	Route::post('/processPayment', array('as' => 'processPayment', 'uses' => 'CartsController@processPayment'));
 

@@ -15,7 +15,7 @@
 
 	{{--NEW PRODUCT CATEGORY--}}
 
-		<div id="showProduct_{{$product->id}}" class="reveal-modal" style="width:100%;max-width:500px;max-height:80%;overflow-y:scroll;background-color:#000000;" data-reveal> 
+		<div id="showProduct_{{$product->id}}" class="reveal-modal" style="width:100%;max-width:500px;max-height:100%;overflow-y:scroll;background-color:#000000;" data-reveal> 
 
 	                              {{View::make('products.show')->with('product', $product)}}
 
