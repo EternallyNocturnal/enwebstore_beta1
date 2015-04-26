@@ -89,7 +89,58 @@
 </form>
 {{Form::open(array('route' => 'addToCart', 'method' => 'post'))}}
 {{Form::hidden('addID', $product->id)}}
-{{Form::hidden('size', 'small')}}<!--------TEST DATA REMOVE------>
+
+
+
+
+@if($product->onesize == 1)One Size Only
+			{{Form::hidden('size', 'onesize')}}
+			@else
+		<select name="size" style="color:#000000;max-width:50%">
+			
+
+			@if($product->xsmall == 1)
+			<option value="XSmall">X-Small</option>
+			@endif
+
+			@if($product->small == 1)
+			<option value="Small">Small</option>
+			@endif
+
+			@if($product->medium == "1")
+			<option value="Medium">Medium</option>
+			@endif
+
+			@if($product->large == "1")
+			<option value="Large">Large</option>
+			@endif
+
+			@if($product->xlarge == "1")
+			<option value="X-Large">X-Large</option>
+			@endif
+
+			@if($product->xxlarge == "1")
+			<option value="XX-Large">XX-Large</option>
+			@endif
+
+			@if($product->xxxlarge == "1")
+			<option value="XXX-Large">XXX-Large</option>
+			@endif
+
+
+		</select>
+		@endif
+
+
+
+
+
+
+
+
+
+
+
 <button type="submit">AddCart</button>
 {{Form::close()}}
 <br>

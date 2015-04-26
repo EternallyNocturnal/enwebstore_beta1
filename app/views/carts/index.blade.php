@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div style="width:100%:height:100%;">
+<div style="width:100%:height:100%;min-height:900px;">
 	<?php $pricetag = 0;
 		  $shipcounter = 0;
 	?>
@@ -38,11 +38,8 @@
 		
 	@endforeach
 
-
-</div>
-
 @if($pricetag > 0)
-<div style="min-height:800px;max-width:100%">
+
 <?php 
 	if($shipcounter > 1){
 	$shipcost = ($shipcounter / 2) * 599;
@@ -52,26 +49,27 @@
 	$pricetag = $pricetag + round($shipcost,0);
 ?>
 
-<div class="small-12 large-10 columns" style="text-align:right">
+
 {{Form::open(array('route' => 'checkOut', 'method' => 'post'))}}
 {{Form::hidden('checkoutAmt', $pricetag)}}
 
 <button type="submit" style="border-radius:45px" class="button small">${{substr($pricetag,0,-2)}}.{{substr($pricetag,-2)}}<br>Check Out</button>
 
 {{Form::close()}}
-</div>
-
+<br><br>
 {{Form::open(array('route' => 'emptyCart', 'method' => 'post'))}}
-<div class="small-12 large-2 columns" style="text-align:right">
+
 <button type="submit" class="button tiny" style="border-radius:35px;background-color:#700000">Empty Cart</button>
 {{Form::close()}}
-</div>
 </div>
 @else
 <div style="min-height:800px">
 THERE DOESNT SEEM TO BE ANYTHING IN YOUR CARTE! SHOPPE HARDER!
-</div>
+
 @endif
+
+</div>
+
 
 @stop
 

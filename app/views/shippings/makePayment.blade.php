@@ -3,13 +3,13 @@
 <?php $checkoutAmt = Session::get('checkoutAmt');
       $customer = Shipping::where('cart_id', Session::get('cart_id'))->first();
 ?>
-<div style="background-color:#000000">
+<div style="background-color:#000000; min-height:900px">
 <div class="small-12 large-12 columns">
-Please verify the information below or 
+
 {{Form::open(array('route' => 'shippings.edit', 'method' => 'get'))}}
-<button type="submit" class="button tiny" style="background-color:#700000;color:#ffffff;border-radius:45px"><b>Go back</b></button>
+ Please verify the information below is correct before entring your credit card details
 {{Form::close()}}
-if you need to fix something
+
 </div>
 
 <div class="small-12 large-12 columns">
@@ -57,5 +57,10 @@ ${{substr($customer->cart_amt,0,-2)}}.{{substr($customer->cart_amt,-2)}}
     data-image="https://www.eternallynocturnal.com/images/blackskull.jpg">
   </script>
   	{{Form::close()}}
+
+    <br><br>
+
+    {{Form::open(array('route' => 'shippings.edit', 'method' => 'get'))}}
+<button type="submit" class="button tiny" style="background-color:#700000;color:#ffffff;border-radius:45px"><b>Edit Shipping Info</b></button>
 </div>
 @stop

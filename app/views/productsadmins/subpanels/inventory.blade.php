@@ -7,7 +7,7 @@
         <h4 class="modal-title" id="editInventory{{$product->id}}" style="background-color:#000000;color:#ffffff">Edit {{$product->name}}</h4>
       </div>
       <div class="modal-body" style="background-color:#000000;color:#000000">
-      	<table width="100%" style="color:#000000">
+
 
 
 {{$errors->first()}}
@@ -48,7 +48,7 @@
 		</div>
 		
 
-	</table>
+
 	</div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
