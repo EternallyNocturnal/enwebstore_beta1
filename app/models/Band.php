@@ -8,6 +8,22 @@ class Band extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = [
+			'contact_id',
+			'manager_id',
+			'label',
+			'name',
+			'city',
+			'state',
+			'zip',
+			'facebook',
+			'twitter',
+			'instagram',
+			'linkedin',
+			'website',
+			'notes'
+	];
+
+	protected $table = 'bands';
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Sale extends \Eloquent {
+class Medium extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
@@ -8,11 +8,6 @@ class Sale extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [
-		'customer_id',
-		'cart_id'
-	];
-
-	protected $table = 'sales';
+	protected $fillable = [];
 
 }

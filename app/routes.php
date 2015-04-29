@@ -67,6 +67,7 @@ Route::group(array('before' => 'auth.basic'), function(){
 
 	//++++++++++CONTACTS+++++++++++++++++++++++++
 	Route::resource('contacts', 'ContactsController');
+	Route::resource('bandmembers', 'BandmembersController');
 	Route::post('/contact/search', array('as' => 'contactSearch', 'uses' => 'ContactsController@contactSearch'));
 
 });

@@ -60,6 +60,7 @@ class CartsController extends \BaseController {
 				$message->to('billing@eternallynocturnal.com')->subject("NEW SALE $".substr($checkoutAmt,0,-2).".".substr($checkoutAmt,-2));
 			});
 
+			Sale::create(array('customer_id' => $markPaid->email, 'cart_id' => Session::get('cart_id')));
 
 			Session::forget('cart_id');
 			Session::forget('checkoutAmt');

@@ -1,4 +1,4 @@
-<div class="modal fade" id="createBandMemberMember" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+<div class="modal fade" id="createBandMember" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
   <div class="modal-dialog" style="width:60%;color:#ffffff;background-color:#000000;border-radius:35px;border:2px #ffffff solid;">
     <div class="modal-content" style="background-color:#000000;color:#ffffff;border-radius:35px;">
       <div class="modal-header">
@@ -8,15 +8,13 @@
 <table>
 <div style="color:#000000">
 
-{{Form::open(array('route' => 'bandmembers.store', 'method' => 'post', 'files' => 'true'))}}
-@if(isset(Band::all))
+
 <select name="band_id">
   <option value="">Select a contact...</option>
 @foreach(Band::all() as $band)
   <option value="{{$band->id}}">{{$band->name}} </option>
 @endforeach
 </select>
-@endif
 
 <div class="col-sm-12 col-lg-12">
 <label class="whiteouttext">First Name</label><br>

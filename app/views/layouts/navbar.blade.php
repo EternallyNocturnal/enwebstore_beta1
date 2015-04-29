@@ -60,7 +60,8 @@
             <li><a href="#">Add Artist</a></li>
             <li class="divider"></li>
             <li><a href="#">Band Manager</a></li>
-            <li><a href="#">Add Band</a></li>
+            <li><a data-toggle="modal" data-target="#createBand" class="btn" style="text-align:left">Add Band</a></li>
+            <li><a data-toggle="modal" data-target="#createBandMember" class="btn" style="text-align:left">Add Band Member</a></li>
           </ul>
         </li>
       </ul>
