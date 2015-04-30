@@ -16,6 +16,7 @@ class Band extends \Eloquent {
 			'city',
 			'state',
 			'zip',
+			'email',
 			'facebook',
 			'twitter',
 			'instagram',

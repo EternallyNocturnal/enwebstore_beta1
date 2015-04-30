@@ -15,6 +15,7 @@ class CreateShowsTable extends Migration {
 		Schema::create('shows', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('name');
 			$table->integer('venue_id');
 			$table->integer('contact_id');
 			$table->string('online_price');

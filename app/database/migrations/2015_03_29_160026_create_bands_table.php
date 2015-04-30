@@ -22,6 +22,7 @@ class CreateBandsTable extends Migration {
 			$table->string('city');
 			$table->string('state');
 			$table->integer('zip');
+			$table->string('email');
 			$table->string('facebook');
 			$table->string('twitter');
 			$table->string('instagram');

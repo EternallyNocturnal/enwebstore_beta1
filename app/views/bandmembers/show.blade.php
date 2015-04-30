@@ -1,1 +1,5 @@
-C:\xampp\htdocs\enwebstore_beta1\app/views/bandmembers/show.blade.php
+@extends('layouts.bsadminmaster')
+
+@section('content')
+{{$bandmember->f_name}}
+@stop
