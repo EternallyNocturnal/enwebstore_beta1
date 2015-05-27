@@ -6,9 +6,9 @@
 	width: 30%;
 }
 </style>
-<div class="col-sm-6 col-md-6">
+<div class="col-sm-12 col-md-6">
 @foreach(Product::all() as $product)
-<div class="col-sm-6 col-md-4" >
+<div class="col-sm-12 col-md-4" >
 	<div id="size_{{$product->id}}" class="btn-sm btn-danger">{{$product->name}}</div><br>
 <script>
 		var oParams = '';
@@ -28,7 +28,7 @@ $('#size_{{$product->id}}').on('click', function(){
 @endforeach
 </div>
 
-<div class="col-sm-6 col-md-6" style="background-color:#000000">
+<div class="col-sm-12 col-md-6" style="background-color:#000000">
 @foreach(Product::all() as $product)
 
 	<div id="quantityButton_{{$product->id}}" class="hidden">
