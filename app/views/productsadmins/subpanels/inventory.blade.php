@@ -14,7 +14,7 @@
 {{Form::model($product, array('method' => 'put', 'files' => 'true', 'route' => array('updateProducts', $product->id)))}}
 	
 								
-		<div class="col-sm-6 col-md-4" style=" text-align:left">
+		<div class="col-sm-6 col-md-6" style=" text-align:left">
 			<h1>Available Sizes</h1><br>
 			@foreach(Size::select('size')->distinct()->get() as $size)
 				{{Form::hidden($size->size, 0)}}
@@ -26,19 +26,8 @@
 			<label style="color:#ffffff">One Size Only</label><br>
 		</div>
 
-	
-		<div class="col-sm-6 col-md-4" style=" text-align:left">
-			<h1>Inventory</h1><br>
-			@foreach(Size::select('size')->distinct()->get() as $size)
-				<label style="color:#ffffff">{{$size->size}} Inventory</label><br>
-				{{Form::text($size->size."_inv", $product->Inventory($size->size))}}<br>
-			@endforeach
-			<label style="color:#ffffff">One Size Only Inventory</label><br>
-			{{Form::text('onesize_inv', $product->Inventory('onesize'))}}
-		</div>
-
 							
-		<div class="col-sm-6 col-md-4" style=" text-align:left">	
+		<div class="col-sm-6 col-md-6" style=" text-align:left">	
 			<h1>Prices</h1><br>
 			@foreach(Size::select('size')->distinct()->get() as $size)
 				<label style="color:#ffffff">{{$size->size}} Price</label><br>

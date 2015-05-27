@@ -175,7 +175,6 @@ class ProductsController extends \BaseController {
 		}
 
 		
-		$this->injectInventory($id);
 		$this->injectPrice($id);
 		
 

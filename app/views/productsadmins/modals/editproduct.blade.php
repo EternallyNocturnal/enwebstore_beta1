@@ -89,31 +89,21 @@
 			
 					@foreach(Size::select('size')->distinct()->get() as $size)
 
-					<div class="small-6 large-3 columns" >	
+					<div class="small-6 large-6 columns" >	
 					
 					{{Form::hidden($size->size, 0)}}
 					{{Form::checkbox($size->size)}}
 
 						
 							<label style="color:#ffffff">{{Str::title($size->size)}}</label>
-					</div>
-
-					<div class="small-6 large-3 columns" >	
-						
-					<label style="color:#ffffff">{{$size->size}} Inventory</label>
-					{{Form::text($size->size."_inv", $product->Inventory($size->size))}}
 
 							
 					</div>
 
 					@endforeach
-					<div class="small-6 large-3 columns">
+					<div class="small-6 large-6 columns">
 							{{Form::checkbox('onesize', 1, $product->onesize)}}
 							<label style="color:#ffffff">One Size Only</label>
-					</div>
-					<div class="small-6 large-3 columns">
-						<label style="color:#ffffff">One Size Only Inventory</label>
-							{{Form::text('onesize_inv', $product->Inventory('onesize'))}}
 							
 					</div>
 

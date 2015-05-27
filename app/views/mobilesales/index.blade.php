@@ -9,7 +9,7 @@
 <div class="col-sm-6 col-md-6">
 @foreach(Product::all() as $product)
 <div class="col-sm-6 col-md-4" >
-	<div id="size_{{$product->id}}">{{$product->name}}</div><br>
+	<div id="size_{{$product->id}}" class="btn-sm btn-danger">{{$product->name}}</div><br>
 <script>
 		var oParams = '';
 var money = "{{$product->id}}";
@@ -18,6 +18,7 @@ var money = "{{$product->id}}";
 
 <script>
 $('#size_{{$product->id}}').on('click', function(){
+	$(this).removeClass('btn-danger').addClass('btn-success');
 	$('#quantityButton_{{$product->id}}').toggleClass('hidden');
 })
 </script>
@@ -33,7 +34,7 @@ $('#size_{{$product->id}}').on('click', function(){
 	<div id="quantityButton_{{$product->id}}" class="hidden">
 	<div id="size_{{$product->id}}">
 		{{$product->name}}
-		<button class="pull-right" onclick="closeInventory('#quantityButton_{{$product->id}}')">
+		<button class="pull-right" onclick="closeInventory('#quantityButton_{{$product->id}}');">
 			<i class="fa fa-close"></i>
 		</button></div>
 	<br>
@@ -45,9 +46,6 @@ $('#size_{{$product->id}}').on('click', function(){
 		<tr>
 
 	@foreach(Size::all() as $sizes)
-		<script type="text/javascript">
-		</script>
-
 
 	<td>{{Str::title($sizes->size)}}
 	<td>
@@ -104,6 +102,9 @@ $('#size_{{$product->id}}').on('click', function(){
 		</center>
 
 </table>
+<br>
+<br>
+<br>
 	</div>
 
 <script>
@@ -130,8 +131,10 @@ $('#size_{{$product->id}}').on('click', function(){
             data: $post,
             cache: false,
             success: function(data){
-            	$('#{{$product->id}}_but').toggleClass('btn-warning').toggleClass('btn-success').html('Updated!');
+            	$('#{{$product->id}}_but').removeClass('btn-warning').addClass('btn-success').html('Updated!');
             	$('#quantityButton_{{$product->id}}').toggleClass('hidden');
+            	$('#size_{{$product->id}}').addClass('btn-primary').removeClass('btn-success');
+
                return data;
             }
             });
