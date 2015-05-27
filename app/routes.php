@@ -20,6 +20,8 @@ Route::post('/SendCommentFeedback', array('as' => 'commentFeedback', 'uses' => '
 //+++++++++++++++++++++++++++++ADMIN ROUTES+++++++++
 Route::group(array('before' => 'auth.basic'), function(){
 
+	Route::post('updateInv', array('as' => 'updateInv', 'uses' => 'MobilesalesController@updateInv'));
+	Route::resource('mobilesales', 'MobilesalesController');
 	//+++++++++++PRODUCTS+++++++++++++++++++++++++++
 	Route::get('productsmanager', array('as' => 'productManager', 'uses' => 'ProductsController@index'));
 	Route::resource('inventory', 'InventoriesController');

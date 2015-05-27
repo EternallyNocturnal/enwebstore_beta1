@@ -18,6 +18,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Products <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li>{{link_to_route('productManager', 'Product Manager')}}</li>
+            <li>{{link_to_route('mobilesales.index', 'Inventory Manager')}}</li>
             <li><a data-toggle="modal" data-target="#createProduct" class="btn" style="text-align:left">Add Product</a></li>
             <li class="divider"></li>
             <li><a href="#">Commerce Manager</a></li>

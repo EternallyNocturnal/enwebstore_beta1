@@ -78,7 +78,6 @@
 		        });
 
 
-		      object.addEventListener("myScript", getcap);
 		      </script>
 
 
