@@ -175,7 +175,6 @@ class ProductsController extends \BaseController {
 		}
 
 		
-		$this->injectPrice($id);
 		
 
 		return Redirect::route('productManager');
